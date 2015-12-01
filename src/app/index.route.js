@@ -15,6 +15,11 @@
             'nav': {
               templateUrl: 'app/nav/nav.html'
             },
+            'carousel': {
+              templateUrl: 'app/carousel/carousel.html',
+              controller: 'CarouselController',
+              controllerAs: 'carousel'
+            },
             '': { 
               templateUrl: 'app/main/main.html',
               controller: 'MainController',
