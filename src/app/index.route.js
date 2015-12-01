@@ -20,11 +20,11 @@
               controller: 'CarouselController',
               controllerAs: 'carousel'
             },
-            '': { 
-              templateUrl: 'app/main/main.html',
-              controller: 'MainController',
-              controllerAs: 'main'
-            },
+            // '': { 
+            //   templateUrl: 'app/main/main.html',
+            //   controller: 'MainController',
+            //   controllerAs: 'main'
+            // },
             // the child views will be defined here (absolutely named)
             'producto': {
               templateUrl: 'app/producto/producto.html'//,
