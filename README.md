@@ -18,4 +18,3 @@ gulp protractor to launch your e2e tests with Protractor
 
 gulp protractor:dist to launch your e2e tests with Protractor on the dist files
 
-More information on the gulp tasks in the User Guide.
