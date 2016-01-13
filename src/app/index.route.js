@@ -5,6 +5,12 @@
     .module('miApp')
     .config(routerConfig);
 
+  var nav = 
+    {
+            templateUrl: 'app/nav/nav.html',
+            controller: 'NavController',
+            controllerAs: 'nav'
+          }
   /** @ngInject */
   function routerConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
@@ -12,29 +18,44 @@
         url: '/',
         views: {
             // the main template will be placed here (relatively named)
-            'nav': {
-              templateUrl: 'app/nav/nav.html'
-            },
+            'nav': nav,
             'carousel': {
              templateUrl: 'app/carousel/carousel.html',
              controller: 'CarouselController',
              controllerAs: 'carousel'
             },
-            '': { 
-              templateUrl: 'app/main/main.html',
-              controller: 'MainController',
-              controllerAs: 'main'
-            },
+            
             // the child views will be defined here (absolutely named)
-            'producto': {
-              templateUrl: 'app/producto/producto.html'//,
-              //controller: 'ProductoController',
-              //controllerAs: 'producto'
+            'tienda': {
+              templateUrl: 'app/tienda/tienda.html'
+            },
+            'contacto':{
+              templateUrl: 'app/contacto/contacto.html'
+            },
+            'footer':{
+              templateUrl: 'app/footer/footer.html'
             }
         }
+      })
+      .state('detalle', {
+        url: '/detalle',
+        views:{
+                      // the main template will be placed here (relatively named)
+            'nav': nav,
+            'detalle': {       
+              templateUrl: 'app/detalle/detalle.html',
+              controller: 'DetalleController',
+              controllerAs: 'detalle'
+            },
+            'footer':{
+              templateUrl: 'app/footer/footer.html'
+            }
+        }
+
       });
 
     $urlRouterProvider.otherwise('/');
   }
 
 })();
+  

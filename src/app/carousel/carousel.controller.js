@@ -5,27 +5,23 @@ angular
   //CarouselController.$inject = ['$scope'];
 
   function CarouselController() {
-    
-    var vm = this;
+	
+	var vm = this;
+	vm.myInterval = 5000;
+	vm.noWrapSlides = false;
+	vm.slides = [];
+	vm.addSlide = addSlide;
 
-    vm.myInterval = 5000;
-    vm.noWrapSlides = false;
-    vm.slides = [];
-    
-    vm.addSlide = addSlide;
+	for (var i=1; i<4; i++) {
+		vm.addSlide(i);
+	}
 
-    for (var i=0; i<4; i++) {
-      vm.addSlide();
-    }
-
-    function addSlide() {
-      var newWidth = 600 + vm.slides.length + 1;
-      vm.slides.push({
-        image: '//placekitten.com/' + newWidth + '/300',
-        text: ['More','Extra','Lots of','Surplus'][vm.slides.length % 4] + ' ' +
-          ['Cats', 'Kittys', 'Felines', 'Cutes'][vm.slides.length % 4]
-      });
-    }
-
-  }
+		function addSlide(i) {
+			vm.slides.push({
+				image: '../assets/images/c' + i + '.jpg',
+				text: ['Creamos y diseñamos nuestras propias maquinas y personajes y los convertimos en modelos armables para que los ensambles, los pintes y los colecciones, diviértete!','Extra','Lots of','Surplus'][vm.slides.length % 4] + ' ' +
+				['Cats', 'Kittys', 'Felines', 'Cutes'][vm.slides.length % 4]
+			});
+		}
+	}
 
