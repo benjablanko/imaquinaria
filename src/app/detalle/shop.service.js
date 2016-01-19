@@ -10,11 +10,14 @@
 		Shop.$inject = ['$rootScope']; 
 
 		function Shop($rootScope) {
-			
-			this.items = [];
+			var vm = this;
+			vm.items = [];
 			//this.getItems = get;
-			this.minimal = minimRequeriments;
-	
+			vm.minimRequeriments = minimRequeriments;
+			vm.isInteger = isInteger;
+			vm.checkExistsProduct = checkExistsProduct;
+			//vm.getItems = get;
+			vm.add = add;
 			$rootScope.udpShopContent = [];
 			$rootScope.udpShopTotalPrice = 0;
 			$rootScope.udpShopTotalProducts = 0;
@@ -34,7 +37,7 @@
 				{
 					throw new Error("La cantidad añadida debe ser mayor de 0");
 				}
-				if(this.isInteger(product.qty) === false)
+				if(vm.isInteger(product.qty) === false)
 				{
 					throw new Error("La cantidad del producto debe ser un número entero");
 				}

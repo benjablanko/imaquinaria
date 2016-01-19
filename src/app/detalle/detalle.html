@@ -1,126 +1,39 @@
-<div class="container-full marketing" style="margin-top: 41px;  min-height: 440px;">
-	<div class ="container">
-      <div class="row">
-        <h2 class="text-center">CHERKÁN MODEL KIT</h2>
-        <img  style ="display: block;
-    margin-left: auto;
-    margin-right: auto" src="../assets/images/underline-white.png">
-      </div>
-      <!-- Three columns of text below the carousel -->
-      <div class="tienda row row-centered" >
-        <div class="col-sm-6">
-          <img  src="../assets/images/avion1.jpg" alt="Generic placeholder image" width="400" height="300">
-        </div><!-- /.col-sm-3 -->
-        <div class="col-centered col-sm-6">
-	        <div class ="row">
-	        	<div class ="col-sm-12">
-	        		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	        		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-	        	</div>
-	        </div>
-	        <div class ="row">
-	        	<div class ="col-sm-6">
-	        		Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	        	</div>
-	        </div>
-	        <div class ="row">
-	        	<div class ="col-sm-6">
-	        		<h2>$80.00</h2>
-	        		<p>Shiping cost not included</p>
-	        	</div>
-	        	<div class ="col-sm-6">
-	        		<button  ng-click="add(productoTienda)" style="width:133px; margin-bottom: 22px;" type="submit" class="btn btn-primary btn-md center-block boton_envio">Añadir al Carro</button>
-	        	</div>
-	        </div>
-         
-        </div><!-- /.col-sm-3 -->
- 
-      </div><!-- /.row -->
-      </div>
-</div>
-
-<div ng-repeat="productoTienda in detalle.productosTienda">
-			<h2 class="text-center">{{productoTienda.name}}</h2>
-
- 			<img  style ="display: block;margin-left: auto; margin-right: auto" src="../assets/images/underline-white.png">
-      		</img>
-      <!-- Three columns of text below the carousel -->
-      <div class="tienda row row-centered" >
-        <div class="col-sm-6">
-          <img  src="../assets/images/avion1.jpg" alt="Generic placeholder image" width="400" height="300">
-        </div><!-- /.col-sm-3 -->
-        <div class="col-centered col-sm-6">
-	        <div class ="row">
-	        	<div class ="col-sm-12">
-	        		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	        		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-	        	</div>
-	        </div>
-	        <div class ="row">
-	        	<div class ="col-sm-6">
-	        		Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	        	</div>
-	        </div>
-	        <div class ="row">
-	        	<div class ="col-sm-6">
-	        		<h2>Precio: ${{ productoTienda.price }} Pesos</h2>
-	        		<p>Shiping cost not included</p>
-	        	</div>
-	        	<div class ="col-sm-6">
-	        	<button  style="width:133px; margin-bottom: 22px;"  class="btn btn-primary btn-md center-block boton_envio" ng-click="detalle.add(productoTienda);">Añadir al Carro</button>
-	        	</div>
-	        </div>
-         
-        </div><!-- /.col-sm-3 
-
-			<img ng-src="{{productoTienda.picture}}" width="80" height="80" style="margin-bottom: 10px" />
-			<!--<select ng-init="productoTienda.total=1" ng-model="productoTienda.total">
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-			</select>-->
-
+<div class="container-full marketing" style="min-height: 440px;">
+	<div ng-repeat="productoTienda in detalle.productosTienda">
+		<div class ="container">
+	      	<div class="row">
+				<h2 class="text-center">{{productoTienda.name}}</h2>
+	 			<img  style ="display: block;margin-left: auto; margin-right: auto" src="../assets/images/underline-white.png">
+	      		</img>
+	      	</div>
+	      	<!-- Three columns of text below the carousel -->
+	      	<div class="tienda row row-centered" >
+	        	<div class="col-sm-6">
+	          		<img  src="../assets/images/avion1.jpg" alt="Generic placeholder image" width="400" height="300">
+	        	</div><!-- /.col-sm-3 -->
+	        	<div class="col-centered col-sm-6">
+			        <div class ="row">
+			        	<div class ="col-sm-12">
+			        		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			        		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+			        	</div>
+			        </div>
+			        <div class ="row">
+			        	<div class ="col-sm-6">
+			        		Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+			        	</div>
+			        </div>
+			        <div class ="row">
+			        	<div class ="col-sm-6">
+			        		<h2>Precio: ${{ productoTienda.price }} Pesos</h2>
+			        		<p>Shiping cost not included</p>
+			        	</div>
+			        	<div class ="col-sm-6">
+			 <button  style="width:133px; margin-bottom: 22px;"  class="btn btn-primary btn-md center-block boton_envio" ng-click="detalle.add(productoTienda)">Añadir al Carro</button>
+			        	</div>
+			        </div>
+	        	</div> 
+			</div>
 		</div>
-		</div>
-
-<div class="container-full marketing" style="margin-top: 41px;  min-height: 440px;">
-	<div class ="container">
-      <div class="row">
-        <h2 class="text-center">CHERKÁN MODEL KIT</h2>
-        <img  style ="display: block;
-    margin-left: auto;
-    margin-right: auto" src="../assets/images/underline-white.png">
-      </div>
-      <!-- Three columns of text below the carousel -->
-      <div class="tienda row row-centered" >
-        <div class="col-sm-6">
-          <img  src="../assets/images/avion1.jpg" alt="Generic placeholder image" width="400" height="300">
-        </div><!-- /.col-sm-3 -->
-        <div class="col-centered col-sm-6">
-	        <div class ="row">
-	        	<div class ="col-sm-12">
-	        		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	        		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-	        	</div>
-	        </div>
-	        <div class ="row">
-	        	<div class ="col-sm-6">
-	        		Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	        	</div>
-	        </div>
-	        <div class ="row">
-	        	<div class ="col-sm-6">
-	        		<h2>$80.00</h2>
-	        		<p>Shiping cost not included</p>
-	        	</div>
-	        	<div class ="col-sm-6">
-	        		<button style="width:133px; margin-bottom: 22px;" type="submit" class="btn btn-primary btn-md center-block boton_envio">Añadir al Carro</button>
-	        	</div>
-	        </div>
-         
-        </div><!-- /.col-sm-3 -->
- 
-      </div><!-- /.row -->
-      </div>
+	</div>
 </div>

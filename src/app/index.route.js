@@ -6,11 +6,11 @@
     .config(routerConfig);
 
   var nav = 
-    {
-            templateUrl: 'app/nav/nav.html',
-            controller: 'NavController',
-            controllerAs: 'nav'
-          }
+  {
+    templateUrl: 'app/nav/nav.html',
+    controller: 'NavController',
+    controllerAs: 'nav'
+  }
   /** @ngInject */
   function routerConfig($stateProvider, $urlRouterProvider) {
     $stateProvider

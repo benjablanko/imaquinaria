@@ -5,7 +5,7 @@
     <title>miApp</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
     <!-- bower:css -->
@@ -23,17 +23,17 @@
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
+    <div ui-view="nav"></div>
     <div ui-view ></div>
     <div ui-view="detalle"></div>
-    <div ui-view="carousel"></div>
-    <div ui-view="nav"></div>
-    <div ui-view="tienda"></div>
-    <div ui-view="comprar"></div>
-    <div ui-view="contacto"></div>
-    <div ui-view="footer"></div>
+    <div class="fix-anchor" id="carousel" ui-view="carousel"></div>
 
-    <!-- build:js(src) scripts/vendor.js -->
+    <div class="fix-anchor" id="tienda" ui-view="tienda"></div>
+    <div ui-view="comprar"></div>
+    <div class="fix-anchor" id="contacto" ui-view="contacto"></div>
+    <div id ="anchor" ui-view="footer"></div>
+
+   <!-- build:js(src) scripts/vendor.js -->
     <!-- bower:js -->
     <!-- run `gulp inject` to automatically populate bower script dependencies -->
     <!-- endbower -->
@@ -48,6 +48,6 @@
     <!-- angular templates will be automatically converted in js and inserted here -->
     <!-- endinject -->
     <!-- endbuild -->
-
+<script src="../bower_components/ng-dialog/js/ngDialog.js"></script>
   </body>
 </html>

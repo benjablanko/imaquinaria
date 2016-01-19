@@ -6,10 +6,10 @@
     .controller('NavController', NavController);
 
   /** @ngInject */
-  function NavController() {
+  function NavController($location) {
     var vm = this;
-
-    vm.navbarCollapsed  = true;
-    
+    vm.navbarCollapsed  = true;  
   }
 })();
+
+

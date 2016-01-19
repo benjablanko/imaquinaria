@@ -6,20 +6,49 @@
 	.controller('DetalleController', DetalleController);
 	DetalleController.$inject = ['Shop']; 
 	/** @ngInject */
-	function DetalleController($Shop) {
+	function DetalleController($Shop, $modal, $log) {
 		var vm = this;
 
-
+		vm.add = add;
+		vm.abrir = abrir;
+		vm.items = ['item1', 'item2', 'item3'];
+		vm.animationsEnabled = true;
 		function add(producto){
 		//alert(producto.total); return;
+			console.log("asd");
+			console.log(producto);
 			var product = {};
 			product.id = producto.id;
 			product.price = producto.price;
 			product.name = producto.name;
 			product.category = producto.category;
-			product.qty = parseInt(producto.total || 1,10);
+			product.qty = 1;
 			$Shop.add(product);
+			//ngDialog.open({ template: 'modal.html' });
+			//desplegar
+			vm.abrir("xs");
+ 		
 		}
+	    function abrir(size) {
+
+	        var modalInstance = $modal.open({
+	            animation: vm.animationsEnabled,
+	            templateUrl: 'iframe-modal.html',
+	            controllerAs: 'vm',
+	            size: size,
+	            resolve: {
+	                items: function () {
+	                    return vm.items;
+	                }
+	            }
+        	});
+
+	        modalInstance.result.then(function (selectedItem) {
+	            vm.selected = selectedItem;
+	        }, function () {
+	            $log.info('Modal dismissed at: ' + new Date());
+	        });
+    	}
 
 		vm.productosTienda = 
 		[
