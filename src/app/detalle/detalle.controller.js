@@ -27,27 +27,27 @@
 			//ngDialog.open({ template: 'modal.html' });
 			//desplegar
 			vm.abrir("xs");
- 		
+		
 		}
-	    function abrir(size) {
+		function abrir(size) {
 
-	        var modalInstance = $uibModal.open({
-	            animation: vm.animationsEnabled,
-	            templateUrl: 'app/detalle/modal.html',
-	            size: size,
-	            resolve: {
-	                items: function () {
-	                    return vm.items;
-	                }
-	            }
-        	});
+			var modalInstance = $uibModal.open({
+				animation: vm.animationsEnabled,
+				templateUrl: 'app/detalle/modal.html',
+				size: size,
+				resolve: {
+					items: function () {
+						return vm.items;
+					}
+				}
+			});
 
-	        modalInstance.result.then(function (selectedItem) {
-	            vm.selected = selectedItem;
-	        }, function () {
-	            $log.info('Modal dismissed at: ' + new Date());
-	        });
-    	}
+			modalInstance.result.then(function (selectedItem) {
+				vm.selected = selectedItem;
+			}, function () {
+				$log.info('Modal dismissed at: ' + new Date());
+			});
+		}
 
 		vm.productosTienda = 
 		[

@@ -1,12 +1,13 @@
 
 <div class ="carousel">
-<div class ="">
+<div class ="row row-centered">
     <uib-carousel interval="carousel.myInterval" no-wrap="noWrapSlides">
       <uib-slide ng-repeat="slide in carousel.slides" active="slide.active" index="slide.id">
         <img ng-src="{{slide.image}}" style="height: 600px;width: 850px;">
-        <div class="carousel-caption">
-          <h4>Slide {{slide.id}}</h4>
-          <p>{{slide.text}}</p>
+        <div class="carousel-caption col-xs-12 fix-text-carousel" style="
+   
+">
+          <p >{{slide.text}}</p>
         </div>
       </uib-slide>
     </uib-carousel>
