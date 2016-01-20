@@ -4,9 +4,9 @@
   angular
 	.module('miApp')
 	.controller('DetalleController', DetalleController);
-	DetalleController.$inject = ['Shop']; 
+	DetalleController.$inject = ['Shop','$uibModal','$log']; 
 	/** @ngInject */
-	function DetalleController($Shop, $modal, $log) {
+	function DetalleController($Shop, $uibModal, $log) {
 		var vm = this;
 
 		vm.add = add;
@@ -31,10 +31,9 @@
 		}
 	    function abrir(size) {
 
-	        var modalInstance = $modal.open({
+	        var modalInstance = $uibModal.open({
 	            animation: vm.animationsEnabled,
-	            templateUrl: 'iframe-modal.html',
-	            controllerAs: 'vm',
+	            templateUrl: 'app/detalle/modal.html',
 	            size: size,
 	            resolve: {
 	                items: function () {

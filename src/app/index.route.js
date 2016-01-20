@@ -52,6 +52,22 @@
             }
         }
 
+      })
+      .state('resumen', {
+        url: '/resumen',
+        views:{
+                      // the main template will be placed here (relatively named)
+            'nav': nav,
+            'resumen': {       
+              templateUrl: 'app/resumen/resumen.html',
+              controller: 'DetalleController',
+              controllerAs: 'resumen'
+            },
+            'footer':{
+              templateUrl: 'app/footer/footer.html'
+            }
+        }
+
       });
 
     $urlRouterProvider.otherwise('/');
