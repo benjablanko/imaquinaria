@@ -31,10 +31,10 @@
 		}
 		function abrir(size) {
 
-			vm.modalInstance = $uibModal.open({
+			var modalInstance = $uibModal.open({
 				animation: vm.animationsEnabled,
 				templateUrl: 'app/detalle/modal.html',
-				controller: 'DetalleController',
+				controller: 'ModalInstanceCtrl as modal',
 				size: size,
 				resolve: {
 					items: function () {
@@ -43,7 +43,7 @@
 				}
 			});
 
-			vm.modalInstance.result.then(function (selectedItem) {
+			modalInstance.result.then(function (selectedItem) {
 				vm.selected = selectedItem;
 			}, function () {
 				$log.info('Modal dismissed at: ' + new Date());
