@@ -30,7 +30,9 @@
               templateUrl: 'app/tienda/tienda.html'
             },
             'contacto':{
-              templateUrl: 'app/contacto/contacto.html'
+              templateUrl: 'app/contacto/contacto.html',
+              controller: 'ContactoController',
+              controllerAs: 'contacto'
             },
             'footer':{
               templateUrl: 'app/footer/footer.html'

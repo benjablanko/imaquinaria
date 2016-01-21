@@ -6,18 +6,19 @@
                     <div class = "row">
                         <div class ="col-xs-offset-1 col-xs-10">
                             
-                        <form action="" method="post">
+                        <form >
                             <div class="row" style ="margin-bottom:10px;">
                                 <h2 class="text-center" style ="margin-top">CONTACTO</h2>
                                 <img  style ="display: block;margin-left: auto;margin-right: auto" src="assets/images/underline-red.png">
                             </div>           
                             <div class="form-group">
-                                <input class="form-control" id="id_email" name="email" placeholder="Email" type="email" />
+                            <input class="form-control" ng-model="email" id="id-email" name="email" placeholder="Email" type="email"/>
+
                             </div>               
                             <div class="form-group">
-                            <textarea class="form-control" cols="40"  name="mensaje" placeholder="Mensaje" rows="10"></textarea>
+                            <textarea ng-model="mensaje" class="form-control" cols="40"  name="mensaje" placeholder="Mensaje" rows="10"></textarea>
                             </div>               
-                            <button style="width:133px; margin-bottom: 22px;" type="submit" class="btn btn-primary btn-md center-block boton_envio">Enviar</button>               
+                            <button ng-click="contacto.enviarEmail(email,mensaje)" style="width:133px; margin-bottom: 22px;"  class="btn btn-primary btn-md center-block boton_envio">Enviar</button>
                         </form>       
                         </div>
                     </div>

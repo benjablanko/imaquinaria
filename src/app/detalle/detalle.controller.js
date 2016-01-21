@@ -31,9 +31,10 @@
 		}
 		function abrir(size) {
 
-			var modalInstance = $uibModal.open({
+			vm.modalInstance = $uibModal.open({
 				animation: vm.animationsEnabled,
 				templateUrl: 'app/detalle/modal.html',
+				controller: 'DetalleController',
 				size: size,
 				resolve: {
 					items: function () {
@@ -42,12 +43,13 @@
 				}
 			});
 
-			modalInstance.result.then(function (selectedItem) {
+			vm.modalInstance.result.then(function (selectedItem) {
 				vm.selected = selectedItem;
 			}, function () {
 				$log.info('Modal dismissed at: ' + new Date());
 			});
 		}
+	
 
 		vm.productosTienda = 
 		[
@@ -65,4 +67,6 @@
 		];
 
 	}
+
+
 })();
