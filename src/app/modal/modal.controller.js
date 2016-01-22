@@ -3,10 +3,10 @@
 
   angular
     .module('miApp')
-    .controller('ModalInstanceCtrl', ModalInstanceCtrl);
-    ModalInstanceCtrl.$inject = ['$uibModalInstance','items']; 
+    .controller('ModalCtrl', ModalCtrl);
+    ModalCtrl.$inject = ['$uibModalInstance','items']; 
   /** @ngInject */
-  function ModalInstanceCtrl($uibModalInstance, items) {
+  function ModalCtrl($uibModalInstance, items) {
     var vm = this;
     vm.items = items;
     vm.selected = {

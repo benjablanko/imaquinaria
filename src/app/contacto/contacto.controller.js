@@ -9,18 +9,27 @@
 	function ContactoController($http) {
 		var vm = this;
 		vm.enviarEmail = enviarEmail;
-		vm.email = "";
-		vm.mensaje = "";
-		function enviarEmail(email,mensaje) {
-			//event.preventDefault();
-			console.log (email,mensaje);
-			//$http.post('/someUrl', data, config).then(successCallback, errorCallback);
+		vm.placeHolderMensaje = "Mensjae";
+		vm.placeHolderEmail ="Email";
+		vm.isDisabled = false;
+		vm.desactivarButton = desactivarButton;
+		function enviarEmail() {
 			$http({
 			    method: 'POST',
 			    url: "/p6/imaquinariaserver/mail.php",
-			    data: "nombre=" + "&email=" + email +"&mensaje="+mensaje,
+			    data: "nombre=" + "&email=" + vm.email +"&mensaje="+vm.mensaje,
 			    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 			})
+			vm.email 				= "";
+			vm.mensaje 				= "";
+			vm.placeHolderMensaje 	+= " enviado";
+			vm.placeHolderEmail  	+=" enviado";
+			desactivarButton();
+
 		}
+		function desactivarButton() {
+			vm.isDisabled = true;
+		}
+	
   	}
 })();

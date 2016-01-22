@@ -1,5 +1,5 @@
 <div class="container-full marketing fondo-detalle" >
-	<div ng-repeat="productoTienda in detalle.productosTienda">
+	<div ng-repeat="productoTienda in detalle.productosTienda" class = "margin-producto">
 		<div class ="container">
 	      	<div class="row">
 				<h2 class="text-center">{{productoTienda.name}}</h2>
@@ -9,18 +9,18 @@
 	      	<!-- Three columns of text below the carousel -->
 	      	<div class="tienda row row-centered" >
 	        	<div class="col-sm-6">
-	          		<img  class = "img-thumbnail" src="assets/images/avion1.jpg" alt="Generic placeholder image" width="400" height="300">
+	          		<img  class = "img-thumbnail" src="{{productoTienda.picture}}" alt="Generic placeholder image" width="400" height="300">
 	        	</div><!-- /.col-sm-3 -->
 	        	<div class="col-centered col-sm-6">
 			        <div class ="row">
 			        	<div class ="col-sm-12">
-			        		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			        		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+			        		{{productoTienda.description}}
 			        	</div>
 			        </div>
 			        <div class ="row">
 			        	<div class ="col-sm-6">
-			        		Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+			        		{{productoTienda.escala}}<br> 
+			        		{{productoTienda.procedencia}}
 			        	</div>
 			        </div>
 			        <div class ="row">
