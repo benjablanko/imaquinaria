@@ -4,25 +4,37 @@
   angular
 	.module('miApp')
 	.controller('DetalleController', DetalleController);
-	DetalleController.$inject = ['Shop','$uibModal','$log']; 
+	DetalleController.$inject = ['Shop','$uibModal','$log','$stateParams','$http']; 
 	/** @ngInject */
-	function DetalleController($Shop, $uibModal, $log) {
+	function DetalleController($Shop, $uibModal, $log, $stateParams, $http) {
 		var vm = this;
-
+		vm.class = "";
+		console.log($stateParams.idDetalle);
+		vm.idDetalle = $stateParams.idDetalle;
+		if($stateParams.idDetalle === "1"){
+			vm.class ="marketing";
+		}else{
+			vm.class ="marketing2";
+		}
 		vm.add = add;
 		vm.abrir = abrir;
 		vm.items = ['item1', 'item2', 'item3'];
-		vm.animationsEnabled = true;
+		vm.animationsEnabled = true;	
+		vm.myInterval = 5000;
+		vm.noWrapSlides = false;
+		vm.slides = [];
+
+		vm.status =  {
+			isopen: false
+		};
 		function add(producto){
-		//alert(producto.total); return;
-			console.log("asd");
-			console.log(producto);
 			var product = {};
 			product.id = producto.id;
 			product.price = producto.price;
 			product.name = producto.name;
 			product.category = producto.category;
 			product.qty = 1;
+			vm.items.push(product);
 			$Shop.add(product);
 			//ngDialog.open({ template: 'modal.html' });
 			//desplegar
@@ -30,11 +42,11 @@
 		
 		}
 		function abrir(size) {
-
-			var modalInstance = $uibModal.open({
+			var modalCompra = $uibModal.open({
 				animation: vm.animationsEnabled,
 				templateUrl: 'app/modal/modal.html',
-				controller: 'ModalCtrl',
+				controller: 'ModalController',
+				controllerAs: 'modal',
 				size: size,
 				resolve: {
 					items: function () {
@@ -43,28 +55,42 @@
 				}
 			});
 
-			modalInstance.result.then(function (selectedItem) {
+			modalCompra.result.then(function (selectedItem) {
 				vm.selected = selectedItem;
 			}, function () {
 				$log.info('Modal dismissed at: ' + new Date());
 			});
 		}
-	
 
-		vm.productosTienda = 
-		[
-		{"id": 1, "category": "Detalles", "name": "Campanas", "price": 0.9, "picture": "assets/images/avion1.jpg", "escala": "Kit modelo de resina, escala 1/48" , "procedencia": "Hecho en Chile", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."},
-		{"id": 2, "category": "Detalles", "name": "Carrito", "price": 1, "picture": "assets/images/avion1.jpg", "escala": "Kit modelo de resina, escala 1/48" , "procedencia": "Hecho en Chile", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."},
-		{"id": 3, "category": "Detalles", "name": "Carrito con chupetes", "price": 1.2, "picture": "assets/images/avion1.jpg", "escala": "Kit modelo de resina, escala 1/48" , "procedencia": "Hecho en Chile", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."},
-		{"id": 4, "category": "Detalles", "name": "Cesta", "price": 1.6, "picture": "assets/images/avion1.jpg", "escala": "Kit modelo de resina, escala 1/48" , "procedencia": "Hecho en Chile", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."},
-		{"id": 5, "category": "Detalles", "name": "Mini cesta", "price": 2, "picture": "assets/images/avion1.jpg", "escala": "Kit modelo de resina, escala 1/48" , "procedencia": "Hecho en Chile", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."},
-		{"id": 6, "category": "Detalles", "name": "Enfermera", "price": 3, "picture": "assets/images/avion1.jpg", "escala": "Kit modelo de resina, escala 1/48" , "procedencia": "Hecho en Chile", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."},
-		{"id": 7, "category": "Detalles", "name": "Gatitos", "price": 2.5, "picture": "assets/images/avion1.jpg", "escala": "Kit modelo de resina, escala 1/48" , "procedencia": "Hecho en Chile", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."},
-		{"id": 8, "category": "Detalles", "name": "Perritos", "price": 2.5, "picture": "assets/images/avion1.jpg", "escala": "Kit modelo de resina, escala 1/48" , "procedencia": "Hecho en Chile", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."},
-		{"id": 9, "category": "Detalles", "name": "Profesoras", "price": 2.5, "picture": "assets/images/avion1.jpg", "escala": "Kit modelo de resina, escala 1/48" , "procedencia": "Hecho en Chile", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."},
-		{"id": 10, "category": "Detalles", "name": "Vestido", "price": 1.8, "picture": "assets/images/avion1.jpg", "escala": "Kit modelo de resina, escala 1/48" , "procedencia": "Hecho en Chile", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."},
-		{"id": 11, "category": "Detalles", "name": "Otros", "price": 0.5, "picture": "assets/images/avion1.jpg", "escala": "Kit modelo de resina, escala 1/48" , "procedencia": "Hecho en Chile", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."}
-		];
+		vm.navbarCollapsed  = true; 
+		function toggled(open) {
+			$log.log('Dropdown is now: ', open);
+		}
+		function toggleDropdown($event) {
+			$event.preventDefault();
+			$event.stopPropagation();
+			vm.status.isopen = !vm.status.isopen;
+		}
+		if($stateParams.idDetalle === "1"){ //model
+			vm.productosTienda = 
+			[
+			{"id": 1, "category": "Detalles", "name": "CHERCAN", "price": 35.00, "imagenes": [{"image":"assets/images/chercan1.jpg"},{"image":"assets/images/chercan2.jpg"},{"image":"assets/images/chercan3.jpg" }], "escala": "4 collectible figure set for your aircraft model kit, scale 1/32." , "procedencia": "", "description": "These girls will have your aircraft ready and set for competition at any moment, always aware of flying conditions, the pilot ready to take-off."},
+			{"id": 2, "category": "Detalles", "name": "TRICAHUE", "price": 35.00, "imagenes": [{"image":"assets/images/tricahue1.jpg" },{"image":"assets/images/tricahue2.jpg" },{"image":"assets/images/tricahue3.jpg" },{"image":"assets/images/tricahue4.jpg" },{"image":"assets/images/tricahue5.jpg" }],  "escala": "4 collectible figure set for your aircraft model kit, scale 1/32." , "procedencia": "", "description": "These girls will have your aircraft ready and set for competition at any moment, always aware of flying conditions, the pilot ready to take-off."},
+			];
+		}
+		if($stateParams.idDetalle === "2"){ //art
+			vm.productosTienda = 
+			[
+			{"id": 1, "category": "Detalles", "name": "POSTCARDS SET", "price": 35.00, "imagenes": [{"image":"assets/images/postales1.jpg"},{"image":"assets/images/postales2.jpg"},{"image":"assets/images/postales3.jpg" }], "escala": "" , "procedencia": "", "description": "Illustrated posters from the “Café Air Racer” series. 43x28 cms., laser print over matte couche, 300grs.  (frame is not included)."},
+			];
+		}
+		if($stateParams.idDetalle === "3"){ //accessories
+			vm.productosTienda = 
+			[
+			{"id": 1, "category": "Detalles", "name": "CHERCAN", "price": 35.00, "imagenes": [{"image":"assets/images/chercan1.jpg"},{"image":"assets/images/chercan2.jpg"},{"image":"assets/images/chercan3.jpg" }], "escala": "" , "procedencia": "", "description": "Illustrated set of 21 postcards from the “Café Air Racer” series. 43x28 cms., laser print over matte couche, 300grs."},
+			{"id": 2, "category": "Detalles", "name": "TRICAHUE", "price": 35.00, "imagenes": [{"image":"assets/images/tricahue1.jpg" },{"image":"assets/images/tricahue2.jpg" },{"image":"assets/images/tricahue3.jpg" },{"image":"assets/images/tricahue4.jpg" },{"image":"assets/images/tricahue5.jpg" }],  "escala": "" , "procedencia": "", "description": "Illustrated set of 21 postcards from the “Café Air Racer” series. 43x28 cms., laser print over matte couche, 300grs. "},
+			];
+		}
 
 	}
 

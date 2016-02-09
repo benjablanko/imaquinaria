@@ -1,15 +1,34 @@
-<div class="container-full marketing fondo-detalle" >
-	<div ng-repeat="productoTienda in detalle.productosTienda" class = "margin-producto">
+<div class="container-full {{detalle.class}} mark" style="
+    margin-top: 160px;
+" >
+	<div ng-repeat="productoTienda in detalle.productosTienda" class = " margin-producto">
 		<div class ="container">
 	      	<div class="row">
+	      		<a href="#"
+				socialshare
+				socialshare-provider="twitter"
+				socialshare-text="720kb AngularJS Socialshare"
+				socialshare-hashtags="angularjs, angular-socialshare"
+				socialshare-url="http://720kb.net">
+				Share me
+				</a>
 				<h2 class="text-center">{{productoTienda.name}}</h2>
 	 			<img  style ="display: block;margin-left: auto; margin-right: auto" src="assets/images/underline-white.png">
 	      		</img>
 	      	</div>
 	      	<!-- Three columns of text below the carousel -->
 	      	<div class="tienda row row-centered" >
-	        	<div class="col-sm-6">
-	          		<img  class = "img-thumbnail" src="{{productoTienda.picture}}" alt="Generic placeholder image" width="400" height="300">
+	        	<div class="col-sm-6" >
+
+			<div class ="row">
+			    <uib-carousel interval="detalle.myInterval" no-wrap="noWrapSlides" style ="background-color: #ffffff !important;">
+			      <uib-slide ng-repeat="slide in productoTienda.imagenes"  index="slide.id">
+			        <img ng-src="{{slide.image}}" width="400" height="300">
+			      </uib-slide>
+			    </uib-carousel> 
+			</div>
+
+	
 	        	</div><!-- /.col-sm-3 -->
 	        	<div class="col-centered col-sm-6">
 			        <div class ="row">
@@ -23,17 +42,21 @@
 			        		{{productoTienda.procedencia}}
 			        	</div>
 			        </div>
+
+<!-- con esto cargamos la directiva dir-template -->
+<dir-template></dir-template>
 			        <div class ="row">
 			        	<div class ="col-sm-6">
-			        		<h2>Precio: ${{ productoTienda.price }} Pesos</h2>
-			        		<p>Shiping cost not included</p>
+			        		<h2>Precio: ${{ productoTienda.price }} USD</h2>
+			        		<p>(Shiping cost not included)</p>
 			        	</div>
 			        	<div class ="col-sm-6">
-			 <button  style="width:133px; margin-bottom: 22px;"  class="btn btn-primary btn-md center-block boton_envio" ng-click="detalle.add(productoTienda)">Añadir al Carro</button>
+			 <button  style="width:133px; margin-bottom: 22px;"  class="btn btn-primary btn-md center-block boton_envio" ng-click="detalle.add(productoTienda)">add to cart</button>
 			        	</div>
 			        </div>
 	        	</div> 
 			</div>
 		</div>
+		<div class ="container"><hr style ="border-top: 2px solid #eeeeee; !important"></div>
 	</div>
 </div>

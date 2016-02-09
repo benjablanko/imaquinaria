@@ -21,7 +21,9 @@
     "angular-bootstrap-affix": "~0.2.1",
     "angular-strap": "~2.3.6",
     "angular-scroll": "~1.0.0",
-    "roboto-fontface": "~0.4.3"
+    "roboto-fontface": "~0.4.3",
+    "angular-easy-social-share": "*",
+    "angular-socialshare": "angularjs-socialshare#~0.1.20"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.2"

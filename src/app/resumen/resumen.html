@@ -1,6 +1,8 @@
-<div class="row">
-<div class="col-xs-12">
-  <table class="table table-bordered table-condensed">
+<div class="row" style="
+    margin-top: 200px;
+">
+<div id="tabla-resumen" class="col-xs-12">
+  <table   class="table table-bordered table-condensed">
     <thead>
         <tr>
           <th>Id</th>
@@ -16,15 +18,15 @@
           <td>{{prod.id}}</td>
           <td>{{prod.name}}</td>
           <td>{{prod.qty}}</td>
-          <td>{{roundCurrency(prod.price)}}</td>
-          <td>{{roundCurrency(prod.price * prod.qty)}}</td>
+          <td>{{resumen.roundCurrency(prod.price)}}</td>
+          <td>{{resumen.roundCurrency(prod.price * prod.qty)}}</td>
           <td><a class="button alert" ng-click="remove(prod.id)">Eliminar</a></td>
         </tr>
         <tr>
-          <td colspan="6">Precio total del carrito: {{ roundCurrency(udpShopTotalPrice) }}</td>
+          <td colspan="6">Precio total del carrito: {{ resumen.roundCurrency(udpShopTotalPrice) }}</td>
         <tr>
         <tr>
-          <td colspan="6">Número total de artículos: {{ udpShopTotalProducts }}</td>
+          <td colspan="6">Número total de artículos: {{ resumen.udpShopTotalProducts }}</td>
         <tr>
         <tr>
           <td colspan="6">
@@ -38,9 +40,5 @@
         <tr>  
       </tbody>
     </table>
-    <!--añadimos nuestro formulario de paypal-->
-    <form name="cart" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" id="formPaypal">
-            {{ paypalData() }}
-      </form>
     </div>
 </div>

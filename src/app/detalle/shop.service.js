@@ -18,6 +18,8 @@
 			vm.checkExistsProduct = checkExistsProduct;
 			//vm.getItems = get;
 			vm.add = add;
+			vm.remove = remove;
+			
 			$rootScope.udpShopContent = [];
 			$rootScope.udpShopTotalPrice = 0;
 			$rootScope.udpShopTotalProducts = 0;
@@ -108,7 +110,9 @@
 			* @param - int - id del producto
 			* @return - mixed
 			*/
-			
+			function get () {
+				return $rootScope.udpShopContent;
+			}
 			function remove(id)
 			{
 				try{

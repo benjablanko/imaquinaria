@@ -1,15 +1,13 @@
-<div class="container-full contacto" >
+<div  id="contacto" class="container-full contacto" >
      <div class="container" > 
         <div class="row row-centered" style ="margin-top: 22px;">
             <div class="col-md-8 col-centered">
                 <div class="well text-center">
                     <div class = "row">
-
                         <div class ="col-xs-offset-1 col-xs-10">
-                            
                         <form >
                             <div class="row" style ="margin-bottom:10px;">
-                            <h2 class="text-center">CONTACTO</h2>
+                            <h2 class="text-center">CONTACT</h2>
                                 <img  style ="display: block;margin-left: auto;margin-right: auto" src="assets/images/underline-red.png">
                             </div>           
                             <div class="form-group">
@@ -19,7 +17,7 @@
                             <div class="form-group">
                             <textarea ng-model="contacto.mensaje" class="form-control" cols="40"  name="mensaje" placeholder="{{contacto.placeHolderMensaje}}" rows="10"></textarea>
                             </div>               
-                            <button ng-disabled="contacto.isDisabled" ng-click="contacto.enviarEmail()" style="width:133px; margin-bottom: 22px;"  class="btn btn-primary btn-md center-block boton_envio">Enviar</button>
+                            <button ng-disabled="contacto.isDisabled" ng-click="contacto.enviarEmail()" style="width:133px; margin-bottom: 22px;"  class="btn btn-primary btn-md center-block boton_envio">Send</button>
                         </form>       
                         </div>
                     </div>

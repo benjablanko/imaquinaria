@@ -9,8 +9,8 @@
 	function ContactoController($http) {
 		var vm = this;
 		vm.enviarEmail = enviarEmail;
-		vm.placeHolderMensaje = "Mensjae";
-		vm.placeHolderEmail ="Email";
+		vm.placeHolderMensaje = "message";
+		vm.placeHolderEmail ="email";
 		vm.isDisabled = false;
 		vm.desactivarButton = desactivarButton;
 		function enviarEmail() {
@@ -22,8 +22,8 @@
 			})
 			vm.email 				= "";
 			vm.mensaje 				= "";
-			vm.placeHolderMensaje 	+= " enviado";
-			vm.placeHolderEmail  	+=" enviado";
+			vm.placeHolderMensaje 	+= " sent";
+			vm.placeHolderEmail  	+=" sent";
 			desactivarButton();
 
 		}

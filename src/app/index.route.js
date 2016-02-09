@@ -10,8 +10,15 @@
     templateUrl: 'app/nav/nav.html',
     controller: 'NavController',
     controllerAs: 'nav'
-  }
+  };
+  var navDetalle = 
+  {
+      templateUrl: 'app/detalle/navDetalle.html',
+      controller: 'DetalleController',
+      controllerAs: 'detalle'         
+  };
   /** @ngInject */
+
   function routerConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {
@@ -40,7 +47,7 @@
         }
       })
       .state('detalle', {
-        url: '/detalle',
+        url: '/detalle/:idDetalle',
         views:{
                       // the main template will be placed here (relatively named)
             'nav': nav,
@@ -49,6 +56,7 @@
               controller: 'DetalleController',
               controllerAs: 'detalle'
             },
+            'navdetalle': navDetalle,
             'footer':{
               templateUrl: 'app/footer/footer.html'
             }
@@ -62,9 +70,10 @@
             'nav': nav,
             'resumen': {       
               templateUrl: 'app/resumen/resumen.html',
-              controller: 'DetalleController',
+              controller: 'ResumenController',
               controllerAs: 'resumen'
             },
+            'navdetalle': navDetalle,
             'footer':{
               templateUrl: 'app/footer/footer.html'
             }

@@ -1,5 +1,6 @@
 <!doctype html>
-<html ng-app="miApp">
+<html ng-app="miApp" style="
+    margin-top: -20px;">
   <head>
     <meta charset="utf-8">
     <title>Imaquinariatoys</title>
@@ -23,14 +24,14 @@
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <div ui-view="navdetalle"></div>
     <div ui-view="nav"></div>
     <div ui-view ></div>
     <div ui-view="detalle"></div>
-    <div class="fix-anchor" id="carousel" ui-view="carousel"></div>
-
-    <div class="fix-anchor" id="tienda" ui-view="tienda"></div>
+    <div ui-view="carousel"></div>
+    <div  ui-view="tienda"></div>
     <div ui-view="comprar"></div>
-    <div class="fix-anchor" id="contacto" ui-view="contacto"></div>
+    <div ui-view="contacto"></div>
     <div ui-view="resumen"></div>
     <div id ="anchor" ui-view="footer"></div>
 

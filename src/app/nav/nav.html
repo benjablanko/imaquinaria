@@ -1,6 +1,6 @@
 
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style ="margin-bottom: 20px;">
-	<div class ="container">
+<nav class="navbar navbar-default navbar-fixed-top-principal navbar-default-principal navbar-default navbar-fixed-top" role="navigation" style ="margin-bottom: 20px;">
+	<div class ="container" style="margin-top: 10px;">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" ng-init="navCollapsed = true"
                 ng-click="navCollapsed = !navCollapsed">
@@ -15,81 +15,46 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
-        <ul class="nav navbar-nav">
-            <li><a href="#carousel" du-smooth-scroll="" du-scrollspy="">Acerca de</a></li>
-            <li><a href="#tienda" du-smooth-scroll="" du-scrollspy="">Tienda</a></li>
-            <li><a href="#contacto" du-smooth-scroll="" du-scrollspy="">Contacto</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-    		<li class="dropdown">
-      			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> 
-      				<span class="glyphicon glyphicon-shopping-cart"></span> {{ udpShopTotalProducts }} - Items
-      			</a>
-      		</li>
-      	</ul>
-      	<!--<ul class="dropdown-menu dropdown-cart" role="menu">
-          	<li>
-              <span class="item">
-                <span class="item-left">
-                    <img src="http://lorempixel.com/50/50/" alt="" />
-                    <span class="item-info">
-                        <span>Item name</span>
-                        <span>23$</span>
-                    </span>
-                </span>
-                <span class="item-right">
-                    <button class="btn btn-xs btn-danger pull-right">x</button>
-                </span>
-            </span>
-          	</li>
-          <li>
-              <span class="item">
-                <span class="item-left">
-                    <img src="http://lorempixel.com/50/50/" alt="" />
-                    <span class="item-info">
-                        <span>Item name</span>
-                        <span>23$</span>
-                    </span>
-                </span>
-                <span class="item-right">
-                    <button class="btn btn-xs btn-danger pull-right">x</button>
-                </span>
-            </span>
-          </li>
-          <li>
-              <span class="item">
-                <span class="item-left">
-                    <img src="http://lorempixel.com/50/50/" alt="" />
-                    <span class="item-info">
-                        <span>Item name</span>
-                        <span>23$</span>
-                    </span>
-                </span>
-                <span class="item-right">
-                    <button class="btn btn-xs btn-danger pull-right">x</button>
-                </span>
-            </span>
-          </li>
-          <li>
-              <span class="item">
-                <span class="item-left">
-                    <img src="http://lorempixel.com/50/50/" alt="" />
-                    <span class="item-info">
-                        <span>Item name</span>
-                        <span>23$</span>
-                    </span>
-                </span>
-                <span class="item-right">
-                    <button class="btn btn-xs btn-danger pull-right">x</button>
-                </span>
-            </span>
-          </li>
+    <div class="collapse navbar-collapse " ng-class="!navCollapsed && 'in'">
+        <ul class="boton-carrito nav navbar-nav navbar-right">
+        <li class="dropdown">
+              <!-- Simple dropdown -->
+          <span uib-dropdown on-toggle="nav.toggled(open)">
+          <a href id="simple-dropdown" uib-dropdown-toggle> 
+            <span class="glyphicon glyphicon-shopping-cart"></span> {{ udpShopTotalProducts }} - Items
+          </a>
+          <span class="caret"></span>
+
+          <ul  class="dropdown-menu dropdown-cart" role="menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
+        <li ng-repeat="prod in udpShopContent">
+                <span class="item">
+                  <span class="item-left">
+                      <img src="assets/images/avion1.jpg" style ="width: 50px;"alt="" />
+                      <span class="item-info">
+                          <span>{{prod.name}} ${{prod.price}}</span>
+                          <span>cantidad: {{prod.qty}}</span>
+                      </span>
+                  </span>
+                  <span class="item-right">
+                      <button ng-click="nav.remove(prod.id)" class="btn btn-xs btn-danger pull-right">x</button>
+                  </span>
+              </span>
+              </li>
           <li class="divider"></li>
-          <li><a class="text-center" href="">View Cart</a></li>
-      </ul>
+            <li><a class="text-center" href="#resumen">Pay</a></li>
+     
+          </ul>
+
+      </span>
+          </li>
+        </ul>
     </li>
-  </ul>-->
+  </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#carousel" du-smooth-scroll="" du-scrollspy="">About</a></li>
+            <li><a href="#tienda" du-smooth-scroll="" du-scrollspy="">Shop</a></li>
+            <li><a href="#contacto" du-smooth-scroll="" du-scrollspy="">Contact</a></li>
+        </ul>
     </div>
     </div>
     <!-- /.navbar-collapse -->
