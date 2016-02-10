@@ -9,8 +9,11 @@
 	function DetalleController($Shop, $uibModal, $log, $stateParams, $http) {
 		var vm = this;
 		vm.class = "";
-		console.log($stateParams.idDetalle);
-		vm.idDetalle = $stateParams.idDetalle;
+		if($stateParams.idDetalle === "3"){
+			vm.idDetalle = true;	
+		}else{
+			vm.idDetalle = false;
+		}
 		if($stateParams.idDetalle === "1"){
 			vm.class ="marketing";
 		}else{
@@ -89,6 +92,13 @@
 			[
 			{"id": 1, "category": "Detalles", "name": "CHERCAN", "price": 35.00, "imagenes": [{"image":"assets/images/chercan1.jpg"},{"image":"assets/images/chercan2.jpg"},{"image":"assets/images/chercan3.jpg" }], "escala": "" , "procedencia": "", "description": "Illustrated set of 21 postcards from the “Café Air Racer” series. 43x28 cms., laser print over matte couche, 300grs."},
 			{"id": 2, "category": "Detalles", "name": "TRICAHUE", "price": 35.00, "imagenes": [{"image":"assets/images/tricahue1.jpg" },{"image":"assets/images/tricahue2.jpg" },{"image":"assets/images/tricahue3.jpg" },{"image":"assets/images/tricahue4.jpg" },{"image":"assets/images/tricahue5.jpg" }],  "escala": "" , "procedencia": "", "description": "Illustrated set of 21 postcards from the “Café Air Racer” series. 43x28 cms., laser print over matte couche, 300grs. "},
+			{"id": 3, "category": "Detalles", "name": "TRICAHUE", "price": 35.00, "imagenes": [{"image":"assets/images/tricahue1.jpg" },{"image":"assets/images/tricahue2.jpg" },{"image":"assets/images/tricahue3.jpg" },{"image":"assets/images/tricahue4.jpg" },{"image":"assets/images/tricahue5.jpg" }],  "escala": "" , "procedencia": "", "description": "Illustrated set of 21 postcards from the “Café Air Racer” series. 43x28 cms., laser print over matte couche, 300grs. "},
+			{"id": 4, "category": "Detalles", "name": "TRICAHUE", "price": 35.00, "imagenes": [{"image":"assets/images/tricahue1.jpg" },{"image":"assets/images/tricahue2.jpg" },{"image":"assets/images/tricahue3.jpg" },{"image":"assets/images/tricahue4.jpg" },{"image":"assets/images/tricahue5.jpg" }],  "escala": "" , "procedencia": "", "description": "Illustrated set of 21 postcards from the “Café Air Racer” series. 43x28 cms., laser print over matte couche, 300grs. "},
+			{"id": 5, "category": "Detalles", "name": "CHERCAN", "price": 35.00, "imagenes": [{"image":"assets/images/chercan1.jpg"},{"image":"assets/images/chercan2.jpg"},{"image":"assets/images/chercan3.jpg" }], "escala": "" , "procedencia": "", "description": "Illustrated set of 21 postcards from the “Café Air Racer” series. 43x28 cms., laser print over matte couche, 300grs."},
+			{"id": 6, "category": "Detalles", "name": "TRICAHUE", "price": 35.00, "imagenes": [{"image":"assets/images/tricahue1.jpg" },{"image":"assets/images/tricahue2.jpg" },{"image":"assets/images/tricahue3.jpg" },{"image":"assets/images/tricahue4.jpg" },{"image":"assets/images/tricahue5.jpg" }],  "escala": "" , "procedencia": "", "description": "Illustrated set of 21 postcards from the “Café Air Racer” series. 43x28 cms., laser print over matte couche, 300grs. "},
+			{"id": 7, "category": "Detalles", "name": "TRICAHUE", "price": 35.00, "imagenes": [{"image":"assets/images/tricahue1.jpg" },{"image":"assets/images/tricahue2.jpg" },{"image":"assets/images/tricahue3.jpg" },{"image":"assets/images/tricahue4.jpg" },{"image":"assets/images/tricahue5.jpg" }],  "escala": "" , "procedencia": "", "description": "Illustrated set of 21 postcards from the “Café Air Racer” series. 43x28 cms., laser print over matte couche, 300grs. "},
+			{"id": 8, "category": "Detalles", "name": "TRICAHUE", "price": 35.00, "imagenes": [{"image":"assets/images/tricahue1.jpg" },{"image":"assets/images/tricahue2.jpg" },{"image":"assets/images/tricahue3.jpg" },{"image":"assets/images/tricahue4.jpg" },{"image":"assets/images/tricahue5.jpg" }],  "escala": "" , "procedencia": "", "description": "Illustrated set of 21 postcards from the “Café Air Racer” series. 43x28 cms., laser print over matte couche, 300grs. "}
+
 			];
 		}
 
