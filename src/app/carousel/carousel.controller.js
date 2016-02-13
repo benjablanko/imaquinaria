@@ -12,14 +12,14 @@ angular
 	vm.slides = [];
 	vm.addSlide = addSlide;
 	vm.name = "juan";
-	for (var i=4; i>2; i--) {
+	for (var i=1; i<5; i++) {
 		vm.addSlide(i);
 	}
 
 		function addSlide(i) {
 			vm.slides.push({
 				image: 'assets/images/c' + i + '.png',
-				text:'Creamos y diseñamos nuestras propias maquinas y personajes y los convertimos en modelos armables para que los ensambles, los pintes y los colecciones, diviértete!'
+				text:''
 			});
 		}
 	}
