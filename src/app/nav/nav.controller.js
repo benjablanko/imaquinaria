@@ -7,7 +7,7 @@
 	NavController.$inject = ['$log','Shop']; 
 
   /** @ngInject */
-  function NavController($location, $Shop) {
+  function NavController($location, $Shop, $log) {
 	var vm = this;
 	vm.remove = remove;
 	vm.status =  {
@@ -25,7 +25,7 @@
 	function remove(id){
 		$Shop.remove(id);
 	}
-	vm.appendToEl = angular.element(document.querySelector('#dropdown-long-content'));
+	//vm.appendToEl = angular.element(document.querySelector('#dropdown-long-content'));
 
   }
 })();

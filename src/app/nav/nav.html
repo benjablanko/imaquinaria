@@ -29,7 +29,7 @@
         <li ng-repeat="prod in udpShopContent">
                 <span class="item">
                   <span class="item-left">
-                      <img src="assets/images/avion1.jpg" style ="width: 50px;"alt="" />
+                      <img src="{{prod.image}}" style ="width: 50px;"alt="" />
                       <span class="item-info">
                           <span>{{prod.name}} ${{prod.price}}</span>
                           <span>cantidad: {{prod.qty}}</span>

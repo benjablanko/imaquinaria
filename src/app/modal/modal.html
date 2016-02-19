@@ -3,9 +3,32 @@
     <div class="modal-header ng-scope">
         <h3 class="modal-title">Imaquinaria</h3>
     </div>
-   
+    <form>
+   <div class ="modal-body">
+            <div class="form-group">
+            	<input ng-class="modal.clases" class="form-control" ng-model="modal.email" id="id-email" name="email" placeholder="{{modal.placeHolderEmail}}" type="email"/>
+            </div>   
+    		<div ng-repeat="prod in udpShopContent">
+                <span class="item">
+                  <span class="item-left">
+                      <img src="{{prod.image}}" style ="width: 50px;"alt="" />
+                      <span class="item-info">
+                          <span>{{prod.name}} ${{prod.price}}</span>
+                          <span>cantidad: {{prod.qty}}</span>
+                      </span>
+                  </span>
+                  <span class="item-right">
+                      <button ng-click="modal.remove(prod.id)" class="btn btn-xs btn-danger pull-right">x</button>
+                  </span>
+              </span>
+            </div>
+
+
+   </div>
     <div class="modal-footer ng-scope">
-        <button class="btn btn-primary" type="button" ng-click="modal.cancel()">Seguir Comprando</button>
-        <button class="btn btn-warning" type="button" ng-click="modal.ok('llegue')">Pagar ahora</button>
+        <button ng-hide="showme" class="btn btn-primary" type="button" ng-click="modal.cancel()">Seguir Comprando</button>
+        <button ng-hide="showme" class="btn btn-warning" type="button" ng-click="modal.ok()">Pagar ahora</button>
+        <button ng-show="showme" class="btn btn-warning" type="button" ng-click="modal.info()">Send</button>
     </div>
+    </form>
 </div>
