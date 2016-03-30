@@ -4,51 +4,97 @@
   angular
     .module('miApp')
     .controller('ResumenController', ResumenController);
-    ResumenController.$inject = ['$rootScope','$http']; 
+    ResumenController.$inject = ['$rootScope','$http', '$uibModal','Shop', '$window']; 
   /** @ngInject */
-  function ResumenController($rootScope, $http) {
+  function ResumenController($rootScope, $http, $uibModal, $Shop, $window) {
     var vm = this;
     vm.enviarEmail = enviarEmail;
-    enviarEmail();
+    vm.remove = remove;
     vm.roundCurrency = roundCurrency;
-    function roundCurrency (total)
-    {
+    vm.continueShoping = continueShoping;
+    vm.validEmail = validEmail;
+    vm.errorForm = false;
+    vm.getTotal = getTotal;
+    vm.EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+    vm.animationsEnabled = true;
+    
+    vm.costoEnvio = 0;
+    $http.get('json/envio.json').success(function (data) {
+        vm.envio =  data;
+    });
+
+      
+    function getTotal(){
+      return parseFloat(vm.roundCurrency($rootScope.udpShopTotalPrice))+parseFloat(vm.costoEnvio);
+    }
+    function roundCurrency (total){
       return total.toFixed(2);
     }
-    function enviarEmail() {
-      //console.log($rootScope.udpShopContent[0]);
-      //debugger;
-      //console.log(JSON.stringify($rootScope.udpShopContent));
-      //console.log($('#tabla-resumen').html().toString());
-      vm.email = $rootScope.email;
-      vm.mensaje = "" 
-      if($rootScope.showme){
-        vm.mensaje = "<h1>NOTIFICAR <H1>";
-      }
-      vm.mensaje = vm.mensaje + '<table><thead><tr><th>Id</th><th>Nombre</th><th>Cantidad</th><th>Precio unidad</th><th>Total producto</th></tr></thead><tbody>';
-      for (var i = 0; i < $rootScope.udpShopContent.length; i++) {
-        vm.mensaje = vm.mensaje + "<tr>"+ "<td>" + $rootScope.udpShopContent[i].id + "</td>"+ "<td>" + $rootScope.udpShopContent[i].name + "</td>"+"<td>" +$rootScope.udpShopContent[i].qty + "</td>"+"<td>" + $rootScope.udpShopContent[i].price + "</td>" +"<td>"+ $rootScope.udpShopContent[i].price * $rootScope.udpShopContent[i].qty + "</td>" +"</tr>";
-      }
-       vm.mensaje = vm.mensaje + "<tr>" +
-       "<td colspan='6'>Precio total del carrito: " + roundCurrency($rootScope.udpShopTotalPrice) + "</td>" +" <tr>" +" <tr>" +
-      " <td colspan='6'>Número total de artículos: " + roundCurrency($rootScope.udpShopTotalProducts) + "</td> " +
-       " <tr>" +
-       " <tr>" +
-       " <tr>" +  
-      "</tbody>"+
-    "</table>";
+    function validEmail(email){
+       return vm.EMAIL_REGEXP.test(email);     
+    }
+    function enviarEmail (){
+      if(vm.persona && vm.persona.name && vm.persona.email && validEmail(vm.persona.email) && vm.persona.adress && vm.persona.country && vm.persona.city  && vm.persona.zipcode && vm.persona.region){
+        vm.errorForm = false;
+        vm.email = $rootScope.email;
+        vm.mensaje = "";
+        vm.mensaje += "<html><body>";
+        vm.mensaje += " <h2>Datos Persona: </h2> <br><br><br> <strong>Nombre: </strong>";
+        vm.mensaje +=   vm.persona.name  ;
+        vm.mensaje += "  <br> <br> <br> <strong> Email:</strong> " +vm.persona.email + " <br> <br> <br> ";
+        vm.mensaje += "  <strong> Adress:</strong> "+ vm.persona.adress+ " <br> <br> <br> ";
+        if(vm.persona.block){
+          vm.mensaje += "  <strong> Block N°: </strong>"+ vm.persona.block +" <br> <br> <br> ";
+        }
+        vm.mensaje += "  <strong> City: </strong>" + vm.persona.city + " <br> <br> <br>";
+        vm.mensaje += "  <strong> Country:</strong>" + vm.persona.country + " <br> <br> <br> ";
+        vm.mensaje += " <strong> Region: </strong>" + vm.persona.region + " <br> <br> <br> ";
+        vm.mensaje += " <strong> Zip Code: </strong>" + vm.persona.zipcode +"<br> <br> <br>";
+        if(vm.persona.comments){
+          vm.mensaje += "<strong> Comments:  </strong> " + vm.persona.comments +"<br> <br> <br>";
+        }
+        vm.mensaje = vm.mensaje + '<table rules="all" style="border-color: #666;" cellpadding="10" ><thead><tr><th>Id</th><th>Nombre</th><th>Cantidad</th><th>Precio unidad</th><th>Total producto</th></tr></thead><tbody>';
+ 
+        for (var i = 0; i < $rootScope.udpShopContent.length; i++) {
+          vm.mensaje = vm.mensaje + "<tr>"+ "<td>" + $rootScope.udpShopContent[i].id + "</td>"+ "<td>" + $rootScope.udpShopContent[i].name + "</td>"+"<td>" +$rootScope.udpShopContent[i].qty + "</td>"+"<td>" + $rootScope.udpShopContent[i].price + "</td>" +"<td>"+ $rootScope.udpShopContent[i].price * $rootScope.udpShopContent[i].qty + "</td>" +"</tr>";
+        }
+         vm.mensaje = vm.mensaje + "<tr>" +
+        "<td colspan='6'>Precio total del carrito: " + vm.getTotal() + "</td>" +" <tr>" +" <tr>" +
+        " <td colspan='6'>Número total de artículos: " + roundCurrency($rootScope.udpShopTotalProducts) + "</td> " +
+        " <tr>" +
+        " <tr>" +
+        " <tr>" +  
+        "</tbody>"+
+        "</table>";
+        vm.mensaje = vm.mensaje + "</body></html>";
+        $http({
+            method: 'POST',
+            url: "/p6/imaquinariaserver/mail.php",
+            data: "nombre=" + "&email=" + vm.persona.email +"&mensaje="+vm.mensaje+"&cliente=0",
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
 
+      //email para el cliente
       $http({
           method: 'POST',
           url: "/p6/imaquinariaserver/mail.php",
-          data: "nombre=" + "&email=" + vm.email +"&mensaje="+vm.mensaje,
+          data: "nombre=" + "&email=" + vm.persona.email +"&mensaje="+vm.mensaje +"&cliente=1",
           headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-      })
-      
-      //console.log($Shop.get());
-
+        })     
+        vm.persona ="";
+        $Shop.destroy();
+        $window.location.href = '#/cancel';
+      }
+      else{
+        vm.errorForm = true;
+      }  
     } 
-   
+    function remove(id){
+      $Shop.remove(id);
+    }
+    function continueShoping(){
+      $window.location.href = '#/detalle/1';
+    }
   }
 })();
 

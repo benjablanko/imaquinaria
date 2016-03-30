@@ -17,7 +17,7 @@
 			$http({
 				method: 'POST',
 				url: "/p6/imaquinariaserver/mail.php",
-				data: "nombre=" + "&email=" + vm.email +"&mensaje="+vm.mensaje,
+				data: "nombre=" + "&email=" + vm.email +"&mensaje="+vm.mensaje +"&cliente=0",
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 			})
 			vm.email 				= "";

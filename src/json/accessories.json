@@ -1,0 +1,29 @@
+[  
+    {  
+        "boton":"add to cart",
+        "id":13,
+        "category":"Detalles",
+        "name":"FIGURES",
+        "price":35.00,
+        "imagenes":[  
+            {  
+                "image":"assets/images/pilotas/pilotas_1.jpg"
+            },
+            {  
+                "image":"assets/images/pilotas/pilotas_2.jpg"
+            },
+            {  
+                "image":"assets/images/pilotas/pilotas_3.jpg"
+            },
+            {  
+                "image":"assets/images/pilotas/pilotas_conjunto.jpg"
+            },
+            {  
+                "image":"assets/images/pilotas/pilotas_conjuntopar.jpg"
+            }
+        ],
+        "escala":"4 collectible figure set for your aircraft model kit, scale 1/32.",
+        "procedencia":"",
+        "description":"These girls will have your aircraft ready and set for competition at any moment, always aware of flying conditions, the pilot ready to take-off."
+    }
+]

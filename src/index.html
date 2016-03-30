@@ -1,6 +1,5 @@
-<!doctype html>
-<html ng-app="miApp" style="
-    margin-top: -20px;">
+<!DOCTYPE html>
+<html ng-app="miApp" style="margin-top: -20px;">
   <head>
     <meta charset="utf-8">
     <title>Imaquinariatoys</title>
@@ -19,20 +18,24 @@
     <!-- css files will be automatically insert here -->
     <!-- endinject -->
     <!-- endbuild -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,800' rel='stylesheet' type='text/css'>
   </head>
   <body>
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div ui-view="navdetalle" autoscroll="true"></div>
-    <div ui-view="nav" autoscroll="true"></div>
-    <div ui-view autoscroll="true"></div>
-    <div ui-view="detalle" autoscroll="true"></div>
-    <div ui-view="carousel" autoscroll="true"></div>
-    <div ui-view="tienda" autoscroll="true"></div>
-    <div ui-view="comprar" autoscroll="true"></div>
-    <div ui-view="contacto" autoscroll="true"></div>
-    <div ui-view="resumen" autoscroll="true"></div>
+    <div ui-view="navdetalle" autoscroll="false"></div>
+    <div ui-view="nav" autoscroll="false"></div>
+    <div ui-view autoscroll="false"></div>
+
+    <div ui-view="detalle" autoscroll="false"  ng-class="detalle.clases"></div>
+    <div ui-view="carousel" autoscroll="false"></div>
+    <div ui-view="tienda" autoscroll="false"></div>
+    <div ui-view="comprar" autoscroll="false"></div>
+    <div ui-view="contacto" autoscroll="false"></div>
+    <div ui-view="resumen" autoscroll="false"></div>
+    <div ui-view="cancel" autoscroll="false"></div>
+
     <div id ="anchor" ui-view="footer"></div>
 
    <!-- build:js(src) scripts/vendor.js -->

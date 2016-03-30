@@ -1,0 +1,51 @@
+[  
+    {  
+        "boton":"add to cart",
+        "id":10,
+        "category":"Detalles",
+        "name":"CHERCAN",
+        "officialPrice":107.00,
+        "price":80.00,
+        "imagenes":[  
+            {  
+                "image":"assets/images/aviones/chercan1.jpg"
+            },
+            {  
+                "image":"assets/images/aviones/chercan2.jpg"
+            },
+            {  
+                "image":"assets/images/aviones/chercan3.jpg"
+            }
+        ],
+        "escala":"Resin model kit, 1/35 scale.",
+        "procedencia":"Made in Chile, 2015",
+        "description":"One of the fastest aircrafts on the Café Air Racer collection. Its large, turboprop engine, two coaxial propellers in contra-rotation and a low profile aerodynamic fuselage make this machine unbeatable on straight lines."
+    },
+    {  
+        "boton":"notify me when available",
+        "id":11,
+        "category":"Detalles",
+        "name":"TRICAHUE",
+        "price":" soon",
+        "imagenes":[  
+            {  
+                "image":"assets/images/aviones/tricahue1.jpg"
+            },
+            {  
+                "image":"assets/images/aviones/tricahue2.jpg"
+            },
+            {  
+                "image":"assets/images/aviones/tricahue3.jpg"
+            },
+            {  
+                "image":"assets/images/aviones/tricahue4.jpg"
+            },
+            {  
+                "image":"assets/images/aviones/tricahue5.jpg"
+            }
+        ],
+        "escala":"Resin model kit, 1/35 scale.",
+        "procedencia":"Made in Chile, 2015",
+        "description":"One of the fastest aircrafts on the Café Air Racer collection. Its large, turboprop engine, two coaxial propellers in contra-rotation and a low profile aerodynamic fuselage make this machine unbeatable on straight lines."
+    }
+]

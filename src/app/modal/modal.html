@@ -2,16 +2,14 @@
 <div class="modal-content">
     <div class="modal-header ng-scope">
         <h3 class="modal-title">Imaquinaria</h3>
+        <hr style="border-top: 2px solid #ad342f; !important">
     </div>
     <form>
-   <div class ="modal-body">
-            <div class="form-group">
-            	<input ng-class="modal.clases" class="form-control" ng-model="modal.email" id="id-email" name="email" placeholder="{{modal.placeHolderEmail}}" type="email"/>
-            </div>   
+   <div class ="modal-body">   
     		<div ng-repeat="prod in udpShopContent">
                 <span class="item">
                   <span class="item-left">
-                      <img src="{{prod.image}}" style ="width: 50px;"alt="" />
+                 <img ng-src="{{prod.image}}" style ="width: 50px;"alt="" />
                       <span class="item-info">
                           <span>{{prod.name}} ${{prod.price}}</span>
                           <span>cantidad: {{prod.qty}}</span>
@@ -26,9 +24,9 @@
 
    </div>
     <div class="modal-footer ng-scope">
-        <button ng-hide="showme" class="btn btn-primary" type="button" ng-click="modal.cancel()">Seguir Comprando</button>
-        <button ng-hide="showme" class="btn btn-warning" type="button" ng-click="modal.ok()">Pagar ahora</button>
-        <button ng-show="showme" class="btn btn-warning" type="button" ng-click="modal.info()">Send</button>
+        <button class="btn btn-danger" type="button" ng-click="modal.cancel()">Continue Shoping</button>
+        <button ng-hide="showme" class="btn btn btn-primary" type="button" ng-click="modal.ok()">Checkout</button>
+        <button ng-show="showme" class="btn btn btn-primary" type="button" ng-click="modal.ok()">Send</button>
     </div>
     </form>
 </div>

@@ -1,137 +1,138 @@
-<div class="container-full {{detalle.class}} mark" style="margin-top: 160px;" >
-	
 
+<div class="container-full {{detalle.class}} mark" style="margin-top: 5px;" >
 	<div class ="container">
 	<!-- Three columns of text below the carousel -->
-		<div class="tienda row row-centered" >
+		<div class="detalle-tienda row row-centered" >
 			<div ng-if="detalle.idDetalle">
-				<div class="row" style="margin-bottom: 22px;">
-					<h2 class="text-center">POSTERS</h2>
-					<img  style ="display: block;margin-left: auto; margin-right: auto" src="assets/images/underline-white.png">
-					</img>
-				</div>
-					<div ng-repeat="posters in detalle.posters">
-
-		      	<!-- Three columns of text below the carousel -->
-				      	<div class="tienda row row-centered" >
-				        	<div class="col-sm-6" >
-								<div class ="row">
-								    <uib-carousel interval="detalle.myInterval" no-wrap="noWrapSlides" style ="background-color: #ffffff !important;">
-								      <uib-slide ng-repeat="slide in posters.imagenes"  index="slide.id">
-								        <img ng-src="{{slide.image}}" width="400" height="300">
-								      </uib-slide>
-								    </uib-carousel> 
-								</div>
-				        	</div><!-- /.col-sm-3 -->
-				        	<div class="col-centered col-sm-6">
-						        <div class ="row">
-						        	<div class ="col-sm-12">
-						        		{{posters.description}}
-						        	</div>
-						        </div>
-						        <div class ="row">
-						        	<div class ="col-sm-6">
-						        		{{posters.escala}}<br> 
-						        		{{posters.procedencia}}
-						        	</div>
-						        </div>
-
-						        <div class ="row">
-						        	<div class ="col-sm-6">
-						        		<h2>Precio: ${{ posters.price }} USD</h2>
-						        		<p>(Shiping cost not included)</p>
-						        	</div>
-						        	<div class ="col-sm-6">
-						 <button style="min-width:133px; margin-bottom: 22px;"  class="btn btn-primary btn-md center-block boton_envio" ng-click="detalle.add(posters)">add to cart</button>
-						        	</div>
-						        	<div class ="col-sm-6">
-															 <a style="min-width:133px; margin-bottom: 22px;" href="#"
-																socialshare
-																socialshare-provider="facebook"
-																socialshare-text="Imaquinaria Toys"
-																socialshare-hashtags="{{poster.name}}, Imaquinaria"
-																socialshare-url="http://www.imaquinariatoys.cl"class="btn btn-block btn-social btn-facebook">
-									  <span class="fa fa-facebook"></span>
-									  Share me
-									</a>
-									</div>
-</div>
-
-						        </div>
-				        	</div> 
-						</div>
+				
+				<div ng-repeat="posters in detalle.posters">
+					<div ng-show="posters.name" class="row" style="margin-bottom: 22px; margin-top: 22px;">
+						<h2 class="text-center">{{posters.name}}</h2> <!-- posters -->
+						<img  style ="display: block;margin-left: auto; margin-right: auto" src="assets/images/underline-white.png">
+						</img>
 					</div>
+	      			<!-- Three columns of text below the carousel -->
+			      	<div class="detalle-tienda row row-centered" >
+			        	<div class="col-sm-6" >
+							<div class ="row">
+							    <uib-carousel interval="detalle.myInterval" no-wrap="noWrapSlides" style ="background-color:transparent !important; ">
+							      <uib-slide ng-repeat="slide in posters.imagenes"  index="slide.id">
+							        <img ng-src="{{slide.image}}" width="400" height="300">
+							      </uib-slide>
+							    </uib-carousel> 
+							</div>
+			        	</div><!-- /.col-sm-3 -->
+			        	<div class="col-centered col-sm-6">
+					        <div class ="row">
+					        	<div class ="col-sm-12 descripcion">
+					        		{{posters.description}}
+					        	</div>
+					        </div>
+					        <div class ="row">
+					        	<div class ="col-sm-6">
+					        		{{posters.escala}}<br> 
+					        		{{posters.procedencia}}
+					        	</div>
+					        </div>
+
+					        <div style="margin-top: 22px;"class ="row">
+					        	<div class ="col-sm-6">
+					        		<h2 class ="precio">Price: ${{ posters.price }} USD</h2>
+					        		<p>(Shiping cost not included)</p>
+					        	</div>
+					        	<div class ="col-sm-6">
+					 				<button style="min-width:133px; margin-bottom: 22px;"  class="btn btn-primary btn-md center-block boton_envio" ng-click="detalle.add(posters)">add to cart</button>
+					        	</div>
+					        	<div class ="col-sm-6">
+														 <a style="min-width:133px; margin-bottom: 22px;" href=""
+															socialshare
+															socialshare-provider="facebook"
+															socialshare-text="Imaquinaria Toys"
+															socialshare-hashtags="{{poster.name}}, Imaquinaria"
+															socialshare-url="http://www.imaquinariatoys.cl"class="btn btn-block btn-social btn-facebook">
+								  <span class="fa fa-facebook"></span>
+								  Share me
+								</a>
+								</div>
+							</div>
+					    </div>
+					</div> 
+				    <div  class ="container">
+				    	<hr style ="border-top: 2px solid #eeeeee; !important">
+				    </div>
+				</div>
+			</div>
 
 	
-				<div ng-repeat="productoTienda in detalle.postCards">
-					<div class ="container">
-				      	<div class="row">
-							<h2 class="text-center">{{productoTienda.name}}</h2>
-				 			<img  style ="display: block;margin-left: auto; margin-right: auto" src="assets/images/underline-white.png">
-				      		</img>
-				      	</div>
+			<div ng-repeat="productoTienda in detalle.postCards">
+				<div class ="container">
+				    <div class="row">
+						<h2 class="text-center">{{productoTienda.name}}</h2> <!--postcards-->
+				 		<img  style ="display: block;margin-left: auto; margin-right: auto" src="assets/images/underline-white.png">
+				      	</img>
+				    </div>
 				      	<!-- Three columns of text below the carousel -->
-				      	<div class="tienda row row-centered" >
-				        	<div class="col-sm-6" >
-								<div class ="row">
-								    <uib-carousel interval="detalle.myInterval" no-wrap="noWrapSlides" style ="background-color: #ffffff !important;">
-								      <uib-slide ng-repeat="slide in productoTienda.imagenes"  index="slide.id">
-								        <img ng-src="{{slide.image}}" width="400" height="300">
-								      </uib-slide>
-								    </uib-carousel> 
-								</div>
-				        	</div><!-- /.col-sm-3 -->
-				        	<div class="col-centered col-sm-6">
-						        <div class ="row">
-						        	<div class ="col-sm-12">
-						        		{{productoTienda.description}}
-						        	</div>
-						        </div>
-						        <div class ="row">
-						        	<div class ="col-sm-6">
-						        		{{productoTienda.escala}}<br> 
-						        		{{productoTienda.procedencia}}
-						        	</div>
-						        </div>
+			      	<div style="margin-bottom: 100px;" class="detalle-tienda row row-centered" >
+			        	<div class="col-sm-6" >
+							<div class ="row">
+							    <uib-carousel interval="detalle.myInterval" no-wrap="noWrapSlides" style ="background-color: #ffffff !important;">
+							      <uib-slide ng-repeat="slide in productoTienda.imagenes"  index="slide.id">
+							        <img ng-src="{{slide.image}}" width="400" height="300">
+							      </uib-slide>
+							    </uib-carousel> 
+							</div>
+			        	</div><!-- /.col-sm-3 -->
+			        	<div class="col-centered col-sm-6">
+					        <div class ="row">
+					        	<div class ="col-sm-12 descripcion">
+					        		{{productoTienda.description}}
+					        	</div>
+					        </div>
+					        <div class ="row">
+					        	<div class ="col-sm-6">
+					        		{{productoTienda.escala}}<br> 
+					        		{{productoTienda.procedencia}}
+					        	</div>
+					        </div>
 
-						        <div class ="row">
-						        	<div class ="col-sm-6">
-						        		<h2>Precio: ${{ productoTienda.price }} USD</h2>
-						        		<p>(Shiping cost not included)</p>
-						        	</div>
-						        	<div class ="col-sm-6">
-						 <button style="min-width:133px; margin-bottom: 22px;"  class="btn btn-primary btn-md center-block boton_envio" ng-click="detalle.add(productoTienda)">add to cart</button>
-						        	</div>
-						        	<div class ="col-sm-6">
-															 <a style="min-width:133px; margin-bottom: 22px;" href="#"
-																socialshare
-																socialshare-provider="facebook"
-																socialshare-text="Imaquinaria Toys"
-																socialshare-hashtags="{{productoTienda.name}}, Imaquinaria"
-																socialshare-url="http://www.imaquinariatoys.cl"class="btn btn-block btn-social btn-facebook">
-									  <span class="fa fa-facebook"></span>
-									  Share me
+					        <div class ="row">
+					        	<div class ="col-sm-6">
+					        		<h2 class ="precio">Price: ${{ productoTienda.price }} USD</h2>
+					        		<p>(Shiping cost not included)</p>
+					        	</div>
+					        	<div class ="col-sm-6">
+					 				<button style="min-width:133px; margin-bottom: 22px;"  class="btn btn-primary btn-md center-block boton_envio" ng-click="detalle.add(productoTienda)">add to cart</button>
+					        	</div>
+					        	<div class ="col-sm-6">
+									<a style="min-width:133px; margin-bottom: 22px;" href="" socialshare
+										socialshare-provider="facebook"
+										socialshare-text="Imaquinaria Toys"
+										socialshare-hashtags="{{productoTienda.name}}, Imaquinaria"
+										socialshare-url="http://www.imaquinariatoys.cl"class="btn btn-block btn-social btn-facebook">
+								  		<span class="fa fa-facebook">	
+								  		</span>Share me
 									</a>
-									</div>
-</div>
-
-						        </div>
-				        	</div> 
-						</div>
-					</div>
+								</div>
+							</div>
+					    </div>
+			        </div> 
 				</div>
+  				<div  ng-show=" ! $last "class ="container">
+  					<hr style ="border-top: 2px solid #eeeeee; !important">
+  				</div>			
+  			</div>
 
-			</div>
 			<div ng-if="!detalle.idDetalle">
 				<div ng-repeat="productoTienda in detalle.productosTienda">
 					<div class ="container">
 				      	<div class="row">
-							<h2 class="text-center">{{productoTienda.name}}</h2>
+							<h2 class="text-center">{{productoTienda.name}} </h2> <!--accessories-->
+
 				 			<img  style ="display: block;margin-left: auto; margin-right: auto" src="assets/images/underline-white.png">
 				      		</img>
 				      	</div>
 				      	<!-- Three columns of text below the carousel -->
-				      	<div class="tienda row row-centered" >
+				      	<div style="margin-bottom: 100px;" class=" detalle-tienda row row-centered" >
 				        	<div class="col-sm-6" >
 								<div class ="row">
 								    <uib-carousel interval="detalle.myInterval" no-wrap="noWrapSlides" style ="background-color: #ffffff !important;">
@@ -143,7 +144,7 @@
 				        	</div><!-- /.col-sm-3 -->
 				        	<div class="col-centered col-sm-6">
 						        <div class ="row">
-						        	<div class ="col-sm-12">
+						        	<div class ="col-sm-12 descripcion">
 						        		{{productoTienda.description}}
 						        	</div>
 						        </div>
@@ -154,34 +155,36 @@
 						        	</div>
 						        </div>
 
-						        <div class ="row">
+						        <div style="margin-top: 22px;" class ="row">
 						        	<div class ="col-sm-6">
-						        		<h2>Precio: ${{ productoTienda.price }} USD</h2>
-						        		<p>(Shiping cost not included)</p>
+						        		<h2 class ="precio">Price: ${{ productoTienda.price }} USD</h2>
+						       				<p>before:<strike> ${{productoTienda.officialPrice}}</strike></p>
+
+						        			<p>(Shiping cost not included)</p>
 						        	</div>
 						        	<div class ="col-sm-6">
-						 <button  style="min-width:133px; margin-bottom: 22px;"  class="btn btn-primary btn-md center-block boton_envio" ng-click="detalle.add(productoTienda)">{{productoTienda.boton}}</button>
-						 </div>
-<div class ="col-sm-6">
-						 <a style="min-width:133px; margin-bottom: 22px;" href="#"
-							socialshare
-							socialshare-provider="facebook"
-							socialshare-text="Imaquinaria Toys"
-							socialshare-hashtags="{{productoTienda.name}}, Imaquinaria"
-							socialshare-url="http://www.imaquinariatoys.cl"class="btn btn-block btn-social btn-facebook">
-  <span class="fa fa-facebook"></span>
-  Share me
-</a>
-</div>
-						        	</div>
-						      
-						        </div>
-				        	</div> 
-						</div>
+						 				<button  style="min-width:133px; margin-bottom: 22px;"  class="btn btn-primary btn-md center-block boton_envio" ng-click="detalle.add(productoTienda)">{{productoTienda.boton}}</button>
+						 			</div>
+						        	<div class ="col-sm-6">
+										<a style="min-width:133px; margin-bottom: 22px;" href=""
+											socialshare
+											socialshare-provider="facebook"
+											socialshare-text="Imaquinaria Toys"
+											socialshare-hashtags="{{productoTienda.name}}, Imaquinaria"
+											socialshare-url="http://www.imaquinariatoys.cl"class="btn btn-block btn-social btn-facebook">
+									  		<span class="fa fa-facebook"></span>
+									  		Share me
+										</a>
+									</div>
+								</div>
+						    </div>
+				        </div> 
+				    	<div ng-show=" ! $last " class ="container">
+				    		<hr style ="border-top: 2px solid #eeeeee; !important">
+				    	</div>
 					</div>
 				</div>
 			</div>
-		</div>	
-		<div class ="container"><hr style ="border-top: 2px solid #eeeeee; !important"></div>
+		</div>
 	</div>
 </div>

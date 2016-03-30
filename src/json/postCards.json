@@ -1,0 +1,23 @@
+[  
+    {  
+        "boton":"add to cart",
+        "id":12,
+        "category":"Detalles",
+        "name":"POSTCARDS SET",
+        "price":30.00,
+        "imagenes":[  
+            {  
+                "image":"assets/images/postales/postales1.jpg"
+            },
+            {  
+                "image":"assets/images/postales/postales2.jpg"
+            },
+            {  
+                "image":"assets/images/postales/postales3.jpg"
+            }
+        ],
+        "escala":"",
+        "procedencia":"",
+        "description":"Illustrated set of 21 postcards from the “Café Air Racer” series. 43x28 cms., laser print over matte couche, 300grs."
+    }
+]

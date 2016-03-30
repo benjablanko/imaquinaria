@@ -5,14 +5,12 @@
     .module('miApp')
     .config(routerConfig);
 
-  var nav = 
-  {
+  var nav = {
     templateUrl: 'app/nav/nav.html',
     controller: 'NavController',
     controllerAs: 'nav'
   };
-  var navDetalle = 
-  {
+  var navDetalle = {
       templateUrl: 'app/detalle/navDetalle.html',
       controller: 'DetalleController',
       controllerAs: 'detalle'         
@@ -49,7 +47,6 @@
       .state('detalle', {
         url: '/detalle/:idDetalle',
         views:{
-                      // the main template will be placed here (relatively named)
             'nav': nav,
             'detalle': {       
               templateUrl: 'app/detalle/detalle.html',
@@ -66,7 +63,6 @@
       .state('resumen', {
         url: '/resumen',
         views:{
-                      // the main template will be placed here (relatively named)
             'nav': nav,
             'resumen': {       
               templateUrl: 'app/resumen/resumen.html',
@@ -74,6 +70,20 @@
               controllerAs: 'resumen'
             },
             'navdetalle': navDetalle,
+            'footer':{
+              templateUrl: 'app/footer/footer.html'
+            }
+        }
+
+      })
+      .state('cancel', {
+        url: '/cancel',
+        views:{
+            'nav': nav,
+            'navdetalle': navDetalle,
+            'cancel': {       
+              templateUrl: 'app/cancel/cancel.html'
+            },
             'footer':{
               templateUrl: 'app/footer/footer.html'
             }

@@ -1,0 +1,23 @@
+[
+	{
+		"continente": "Africa",
+		"costo": 12.68
+	},
+
+	{
+		"continente": "America",
+		"costo": 9.16
+	},
+	{
+		"continente": "Australia",
+		"costo": 12.68
+	},
+	{
+		"continente": "Asia",
+		"costo": 10.56
+	},
+	{
+		"continente": "Europe",
+		"costo": 11.37
+	}
+]

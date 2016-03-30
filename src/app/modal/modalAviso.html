@@ -1,0 +1,23 @@
+
+<div class="modal-content">
+    <div class="modal-header ng-scope">
+        <h3 class="modal-title">Imaquinaria</h3>
+        <hr style="border-top: 2px solid #ad342f; !important">
+    </div>
+    <form>
+   <div class ="modal-body">
+      <p>Enter your email address and we will write you back when this product is available</p>
+      <div class="form-group">
+      	<input ng-class="modal.clases" class="form-control" ng-model="modal.email" id="id-email" name="email" placeholder="{{modal.placeHolderEmail}}" type="email" required/>
+      </div>   
+	
+
+
+   </div>
+    <div class="modal-footer ng-scope">
+        <button class="btn btn-danger" type="button" ng-click="modal.cancel()">Continue Shoping</button>
+        <button ng-hide="showme" class="btn btn btn-primary" type="button" ng-click="modal.ok()">Checkout</button>
+        <button ng-show="showme" class="btn btn btn-primary" type="button" ng-click="modal.enviarDatosEmail()">Send</button>
+    </div>
+    </form>
+</div>

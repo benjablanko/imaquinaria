@@ -1,44 +1,146 @@
-<div class="row" style="
-    margin-top: 200px;
-">
-<div id="tabla-resumen" class="col-xs-12">
-  <table   class="table table-bordered table-condensed">
-    <thead>
-        <tr>
-          <th>Id</th>
-          <th>Nombre</th>
-          <th>Cantidad</th>
-          <th>Precio unidad</th>
-          <th>Total producto</th>
-          <th>Eliminar</th>
-        </tr>
-    </thead>
-    <tbody>       
-        <tr ng-repeat="prod in udpShopContent">
-          <td>{{prod.id}}</td>
-          <td>{{prod.name}}</td>
-          <td>{{prod.qty}}</td>
-          <td>{{resumen.roundCurrency(prod.price)}}</td>
-          <td>{{resumen.roundCurrency(prod.price * prod.qty)}}</td>
-          <td><a class="button alert" ng-click="remove(prod.id)">Eliminar</a></td>
-        </tr>
-        <tr>
-          <td colspan="6">Precio total del carrito: {{ resumen.roundCurrency(udpShopTotalPrice) }}</td>
-        <tr>
-        <tr>
-          <td colspan="6">Número total de artículos: {{ resumen.udpShopTotalProducts }}</td>
-        <tr>
-        <tr>
-          <td colspan="6">
-            <a href="#/" class="button success large-12">
-              Ir a la página principal
-            </a>
-            <a ng-disabled="udpShopContent.length < 1" class="btn btn-danger" ng-click="destroy()">
-              Destroy
-            </a>  
-          </td>
-        <tr>  
-      </tbody>
-    </table>
+<div class ="container-full resumen">
+    <div class ="container">
+        <div class="row" style="margin-top: 150px;">
+            
+        </div>
+    <div class="row" style ="margin-bottom:10px;">
+        <h2 class="carroCompras text-center">Shopping Cart</h2>
+        <img  style ="display: block;margin-left: auto;margin-right: auto" ng-src="assets/images/underline-red.png">
+    </div>   
+    <div id=" tabla-resumen" class="table-responsive">
+        <table   class="table text-center table-striped table-condensed table-responsive">
+            <thead>
+                <tr class ="text-center">
+                    <th class="text-center">Product</th>
+                    <th class="text-center">Code</th>
+                    <th class="text-center">Unit Price</th>
+                    <th class="text-center">Units</th>
+                    <th class="text-center">Sub total</th>
+                    <th class="text-center">Delete</th>
+                </tr>
+            </thead>
+            <tbody>       
+                <tr class ="text-center"ng-repeat="prod in udpShopContent">
+                    <td>{{prod.name}}</td>
+                    <td>{{prod.id}}</td>
+                    <td>{{resumen.roundCurrency(prod.price)}}</td>
+                    <td>{{prod.qty}}</td>
+                    <td>{{resumen.roundCurrency(prod.price * prod.qty)}}</td>
+                    <td align="center"><button ng-click="resumen.remove(prod.id)" class="btn btn-xs btn-danger">x</button></td>
+                </tr>
+                <tr>
+                    <td colspan="6" class="text-center">Total of number of the item in the cart: {{udpShopTotalProducts}} </td>
+                </tr>
+                <tr>
+                    <td colspan="6" class="text-center">
+                        <label for="repeatSelect"> Shiping Cost: </label>
+                        <select name="repeatSelect" id="repeatSelect" ng-model="resumen.costoEnvio" >
+                            <option ng-repeat="option in resumen.envio" value="{{option.costo}}">{{option.continente}} - {{option.costo}}</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6">Precio total del carrito: {{resumen.getTotal()}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+            
+            </tfoot>
+        </table>
+    </div>
+    <div class='row'>
+        <div class='col-xs-12 col-sm-4 col-sm-offset-4'>  
+            <button class="btn btn-primary btn-block" type="button" ng-click="resumen.continueShoping()">Continue Shoping</button>
+        </div>
+    </div>
+    <div class='col-xs-12'> 
+        <p class="text-center textResumen">If you have finished shopping, procced whith the checkout <br> by entering your shipping infromation.</p>
+    </div>
+    
+
+
+    <form name="myForm">
+        <div class ="datosPersona col-xs-12 col-sm-8 col-sm-offset-2">
+            <div class='row'>
+                <div class='col-sm-12'>
+                    <div class='form-group'>
+                        <div ng-show ="resumen.errorForm" class="alert alert-success" role="alert"> 
+                            <strong>Invalid values!</strong>  
+                        </div>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-sm-12'>
+                        <div class='form-group'>
+                            <label for="name">Name*</label>
+                            <input class="form-control required email" id="user_email" ng-model="resumen.persona.name"  type="text" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-sm-12'>
+                        <div class='form-group'>
+                            <label for="user_email">Email*</label>
+                            <input class="form-control required email" id="user_email" ng-model="resumen.persona.email" type="email" required/> 
+                        </div>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-sm-9'>    
+                        <div class='form-group'>
+                            <label for="user_title">Shipping Adress*</label>
+                            <input class="form-control" id="user_title" ng-model="resumen.persona.adress"  type="text" />
+                        </div>  
+                    </div>
+                    <div class='col-sm-3'>
+                        <div class='form-group'>
+                            <label for="user_firstname">Block N°</label>
+                            <input class="form-control" id="user_firstname" ng-model="resumen.persona.block" required="true"  type="text" />
+                        </div>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-sm-7'>    
+                      <div class='form-group'>
+                            <label for="user_title">City*</label>
+                            <input class="form-control" id="user_title" ng-model="resumen.persona.city"  type="text" />
+                        </div>
+                    </div>
+                    <div class='col-sm-5'>
+                        <div class='form-group'>
+                            <label for="user_firstname">Country*</label>
+                            <input class="form-control" id="user_firstname"ng-model="resumen.persona.country" required="true"  type="text" />
+                        </div>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-sm-7'>    
+                        <div class='form-group'>
+                            <label for="user_title">Region*</label>
+                            <input class="form-control" id="user_title" ng-model="resumen.persona.region"  type="text" />
+                        </div>
+                    </div>
+                    <div class='col-sm-5'>
+                        <div class='form-group'>
+                            <label for="user_firstname">Zip Code*</label>
+                            <input class="form-control" id="user_firstname" ng-model="resumen.persona.zipcode" type="text" />
+                        </div>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-sm-12'>    
+                        <div class='form-group'>
+                            <label for="user_title">Comments</label>
+                            <textarea ng-model="resumen.persona.comments" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class='row' style="margin-bottom: 100px;"> 
+                    <div class='col-xs-12 col-sm-4 col-sm-offset-4'>  
+                        <button class="btn btn-primary btn-block" ng-click="resumen.enviarEmail()"  type="button">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>

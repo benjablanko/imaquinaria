@@ -12,14 +12,12 @@
 		function Shop($rootScope) {
 			var vm = this;
 			vm.items = [];
-			//this.getItems = get;
 			vm.minimRequeriments = minimRequeriments;
 			vm.isInteger = isInteger;
 			vm.checkExistsProduct = checkExistsProduct;
-			//vm.getItems = get;
 			vm.add = add;
 			vm.remove = remove;
-			
+			vm.destroy = destroy;
 			$rootScope.udpShopContent = [];
 			$rootScope.udpShopTotalPrice = 0;
 			$rootScope.udpShopTotalProducts = 0;
@@ -110,9 +108,7 @@
 			* @param - int - id del producto
 			* @return - mixed
 			*/
-			function get () {
-				return $rootScope.udpShopContent;
-			}
+
 			function remove(id)
 			{
 				try{
