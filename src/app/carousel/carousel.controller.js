@@ -11,6 +11,7 @@ angular
 	vm.noWrapSlides = false;
 	vm.slides = [];
 	vm.addSlide = addSlide;
+
 	for (var i=1; i<5; i++) {
 		vm.addSlide(i);
 	}

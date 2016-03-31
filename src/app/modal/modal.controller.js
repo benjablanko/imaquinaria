@@ -24,10 +24,16 @@
       item: "item"
     };
     vm.isDisabled = true;
+    vm.EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+    vm.validEmail = validEmail;
+
+    function validEmail(email){
+       return vm.EMAIL_REGEXP.test(email);     
+    }
 
     function ok() {
       if($rootScope.showme){
-        if(vm.email != undefined && vm.email.length > 0){
+        if(vm.email != undefined && vm.email.length > 0 && vm.validEmail(vm.email)){
           $rootScope.email = vm.email;
           $uibModalInstance.close(vm.selected.item);
         }else{
@@ -42,9 +48,8 @@
 
     function enviarDatosEmail(){
       vm.clases.warning = false;
-      if(vm.email != undefined && vm.email.length > 0){
+      if(vm.email != undefined && vm.email.length > 0 && vm.validEmail(vm.email)){
           $rootScope.email = vm.email;
-
           var mensaje = "<h1>Notificar a " + vm.email + " por el producto: " + $rootScope.productoAviso.name + "</h1>";
           $http({
             method: 'POST',
@@ -53,8 +58,6 @@
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
           })
           vm.cancel();
-
-          //$uibModalInstance.close(vm.selected.item);
         }else{
           vm.clases.warning = true;
         }

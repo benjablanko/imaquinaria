@@ -33,14 +33,14 @@
                 </tr>
                 <tr>
                     <td colspan="6" class="text-center">
-                        <label for="repeatSelect"> Shiping Cost: </label>
+                        <label for="repeatSelect"> Shipping Cost: </label>
                         <select name="repeatSelect" id="repeatSelect" ng-model="resumen.costoEnvio" >
                             <option ng-repeat="option in resumen.envio" value="{{option.costo}}">{{option.continente}} - {{option.costo}}</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="6">Precio total del carrito: {{resumen.getTotal()}}</td>
+                    <td colspan="6">Total price: {{resumen.getTotal()}}</td>
                 </tr>
             </tbody>
             <tfoot>
@@ -73,7 +73,7 @@
                     <div class='col-sm-12'>
                         <div class='form-group'>
                             <label for="name">Name*</label>
-                            <input class="form-control required email" id="user_email" ng-model="resumen.persona.name"  type="text" required/>
+                            <input class="form-control required email" id="user_email" ng-model="resumen.persona.name"  type="text"/>
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                     <div class='col-sm-12'>
                         <div class='form-group'>
                             <label for="user_email">Email*</label>
-                            <input class="form-control required email" id="user_email" ng-model="resumen.persona.email" type="email" required/> 
+                                <input ng-class="contacto.clases" class="form-control" ng-model="resumen.persona.email" id="id-email" name="email" placeholder=""/>
                         </div>
                     </div>
                 </div>

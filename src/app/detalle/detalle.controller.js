@@ -127,6 +127,7 @@
 
 		}
 		if($stateParams.idDetalle === "3"){ //accessories
+			//para las pilotas esta en true
 			vm.clases = {
 				full: true
 			}
