@@ -3,6 +3,7 @@
         "boton":"add to cart",
         "id":10,
         "category":"Detalles",
+        "title":"CHERCAN",
         "name":"CHERCAN",
         "officialPrice":107.00,
         "price":80.00,
@@ -25,6 +26,7 @@
         "boton":"notify me when available",
         "id":11,
         "category":"Detalles",
+        "title":"TRICAHUE",
         "name":"TRICAHUE",
         "price":" soon",
         "imagenes":[  

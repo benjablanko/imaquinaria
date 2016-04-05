@@ -3,6 +3,7 @@
         "boton":"add to cart",
         "id":1,
         "category":"Detalles",
+        "title":"POSTERS",
         "name":"POSTERS",
         "price":15.00,
         "imagenes":[  
@@ -18,7 +19,8 @@
         "boton":"add to cart",
         "id":2,
         "category":"Detalles",
-        "name":"",
+        "title":"",
+        "name":"POSTERS",
         "price":15.00,
         "imagenes":[  
             {  
@@ -33,7 +35,8 @@
         "boton":"add to cart",
         "id":3,
         "category":"Detalles",
-        "name":"",
+        "title":"",
+        "name":"POSTERS",
         "price":15.00,
         "imagenes":[  
             {  
@@ -48,7 +51,8 @@
         "boton":"add to cart",
         "id":4,
         "category":"Detalles",
-        "name":"",
+        "title":"",
+        "name":"POSTERS",
         "price":15.00,
         "imagenes":[  
             {  
@@ -63,7 +67,8 @@
         "boton":"add to cart",
         "id":5,
         "category":"Detalles",
-        "name":"",
+        "title":"",
+        "name":"POSTERS",
         "price":15.00,
         "imagenes":[  
             {  
@@ -78,7 +83,8 @@
         "boton":"add to cart",
         "id":6,
         "category":"Detalles",
-        "name":"",
+        "title":"",
+        "name":"POSTERS",
         "price":15.00,
         "imagenes":[  
             {  
@@ -93,7 +99,8 @@
         "boton":"add to cart",
         "id":7,
         "category":"Detalles",
-        "name":"",
+        "title":"",
+        "name":"POSTERS",
         "price":15.00,
         "imagenes":[  
             {  
@@ -108,7 +115,8 @@
         "boton":"add to cart",
         "id":8,
         "category":"Detalles",
-        "name":"",
+        "title":"",
+        "name":"POSTERS",
         "price":15.00,
         "imagenes":[  
             {  
@@ -123,7 +131,8 @@
         "boton":"add to cart",
         "id":9,
         "category":"Detalles",
-        "name":"",
+        "title":"",
+        "name":"POSTERS",
         "price":15.00,
         "imagenes":[  
             {  

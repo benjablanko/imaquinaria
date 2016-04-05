@@ -31,7 +31,9 @@
        return vm.EMAIL_REGEXP.test(email);     
     }
 
-    function ok() {
+    function ok(event) {
+      event.preventDefault();
+      event.stopPropagation();
       if($rootScope.showme){
         if(vm.email != undefined && vm.email.length > 0 && vm.validEmail(vm.email)){
           $rootScope.email = vm.email;
@@ -65,7 +67,9 @@
 
 
     }
-    function cancel () {
+    function cancel (event) {
+      event.preventDefault();
+      event.stopPropagation();
       $uibModalInstance.dismiss('cancel');
     }
     function remove(id){

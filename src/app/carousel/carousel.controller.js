@@ -2,25 +2,28 @@ angular
   .module('miApp')
   .controller('CarouselController', CarouselController);
 
-  //CarouselController.$inject = ['$scope'];
+  CarouselController.$inject = ['$http'];
 
-  function CarouselController() {
+  function CarouselController($http) {
 	
 	var vm = this;
 	vm.myInterval = 5000;
 	vm.noWrapSlides = false;
 	vm.slides = [];
 	vm.addSlide = addSlide;
+	$http.get('json/carousel.json').success(function (data) {
+		vm.carouselData =  data;
+		for (var i=1; i<5; i++) {
+			vm.addSlide(i,vm.carouselData[i]);
+		}
+	});
 
-	for (var i=1; i<5; i++) {
-		vm.addSlide(i);
-	}
 
-	function addSlide(i) {
+	function addSlide(i, data) {
 		vm.slides.push({
 			image: 'assets/images/carousel/c' + i + '.png',
-			text:'Duis eleifend condimentum fermentum. Duis et eros purus. Aliquam eget sodales sem. Pellentesque accumsan suscipit pretium. Suspendisse ac elit eros. Cras arcu risus, facilisis sed porttitor a, semper in ipsum. Aliquam ornare ultrices hendrerit.',
-			title: 'TITLE'
+			text:  data.mensaje,
+			title: data.titulo
 		});
 	}
 }

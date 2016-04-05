@@ -32,11 +32,14 @@
                     <td colspan="6" class="text-center">Total of number of the item in the cart: {{udpShopTotalProducts}} </td>
                 </tr>
                 <tr>
-                    <td colspan="6" class="text-center">
+                    <td  colspan="2" class="text-center">
                         <label for="repeatSelect"> Shipping Cost: </label>
-                        <select name="repeatSelect" id="repeatSelect" ng-model="resumen.costoEnvio" >
-                            <option ng-repeat="option in resumen.envio" value="{{option.costo}}">{{option.continente}} - {{option.costo}}</option>
-                        </select>
+                        </td>
+                     <td  colspan="2" class="text-center">   
+                        <select class="form-control"  ng-model='resumen.costoEnvio' required ng-options='option.costo as option.continente for option in resumen.envio'></select>
+                        </td>
+                      <td  colspan="2" class="text-center">
+                        <input class="form-control required email" id="user_email" ng-model="resumen.costoEnvio"  type="text"/>
                     </td>
                 </tr>
                 <tr>
@@ -58,7 +61,11 @@
     </div>
     
 
-
+<!--añadimos nuestro formulario de paypal-->
+    <!--    <form name="cart" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" id="formPaypal">
+            {{ resumen.paypalData() }}
+        </form>
+-->
     <form name="myForm">
         <div class ="datosPersona col-xs-12 col-sm-8 col-sm-offset-2">
             <div class='row'>

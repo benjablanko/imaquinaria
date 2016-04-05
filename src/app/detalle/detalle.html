@@ -1,13 +1,14 @@
 
 <div class="container-full {{detalle.class}} mark" style="margin-top: 5px;" >
 	<div class ="container">
+
 	<!-- Three columns of text below the carousel -->
 		<div class="detalle-tienda row row-centered" >
 			<div ng-if="detalle.idDetalle">
 				
 				<div ng-repeat="posters in detalle.posters">
-					<div ng-show="posters.name" class="row" style="margin-bottom: 22px; margin-top: 22px;">
-						<h2 class="text-center">{{posters.name}}</h2> <!-- posters -->
+					<div ng-show="posters.title" class="row" style="margin-bottom: 22px; margin-top: 22px;">
+						<h2 class="text-center">{{posters.title}}</h2> <!-- posters -->
 						<img  style ="display: block;margin-left: auto; margin-right: auto" src="assets/images/underline-white.png">
 						</img>
 					</div>
@@ -16,7 +17,7 @@
 			        	<div class="col-sm-6" >
 							<div class ="row">
 							    <uib-carousel interval="detalle.myInterval" no-wrap="noWrapSlides" style ="background-color:transparent !important; ">
-							      <uib-slide ng-repeat="slide in posters.imagenes"  index="slide.id">
+							      <uib-slide ng-repeat="slide in posters.imagenes"  index="slide.id" style ="margin-top: 0px; padding-top: 0px;">
 							        <img ng-src="{{slide.image}}" width="400" height="300">
 							      </uib-slide>
 							    </uib-carousel> 
@@ -64,10 +65,11 @@
 			</div>
 
 	
+
 			<div ng-repeat="productoTienda in detalle.postCards">
 				<div class ="container">
 				    <div class="row">
-						<h2 class="text-center">{{productoTienda.name}}</h2> <!--postcards-->
+						<h2 class="text-center">{{productoTienda.title}}</h2> <!--postcards-->
 				 		<img  style ="display: block;margin-left: auto; margin-right: auto" src="assets/images/underline-white.png">
 				      	</img>
 				    </div>
@@ -76,7 +78,7 @@
 			        	<div class="col-sm-6" >
 							<div class ="row">
 							    <uib-carousel interval="detalle.myInterval" no-wrap="noWrapSlides" style ="background-color: #ffffff !important;">
-							      <uib-slide ng-repeat="slide in productoTienda.imagenes"  index="slide.id">
+							      <uib-slide ng-repeat="slide in productoTienda.imagenes"  index="slide.id" style ="margin-top: 0px; padding-top: 0px;">
 							        <img ng-src="{{slide.image}}" width="400" height="300">
 							      </uib-slide>
 							    </uib-carousel> 
@@ -101,6 +103,9 @@
 					        		<p>(Shipping cost not included)</p>
 					        	</div>
 					        	<div class ="col-sm-6">
+	
+
+
 					 				<button style="min-width:133px; margin-bottom: 22px;"  class="btn btn-primary btn-md center-block boton_envio" ng-click="detalle.add(productoTienda)">add to cart</button>
 					        	</div>
 					        	<div class ="col-sm-6">
@@ -123,10 +128,11 @@
   			</div>
 
 			<div ng-if="!detalle.idDetalle">
+
 				<div ng-repeat="productoTienda in detalle.productosTienda">
-					<div class ="container">
+					<div class ="container">		    
 				      	<div class="row">
-							<h2 class="text-center">{{productoTienda.name}} </h2> <!--accessories-->
+							<h2 class="text-center">{{productoTienda.title}} </h2> <!--todos-->
 
 				 			<img  style ="display: block;margin-left: auto; margin-right: auto" src="assets/images/underline-white.png">
 				      		</img>
@@ -136,7 +142,7 @@
 				        	<div class="col-sm-6" >
 								<div class ="row">
 								    <uib-carousel interval="detalle.myInterval" no-wrap="noWrapSlides" style ="background-color: #ffffff !important;">
-								      <uib-slide ng-repeat="slide in productoTienda.imagenes"  index="slide.id">
+								      <uib-slide ng-repeat="slide in productoTienda.imagenes"  index="slide.id" style ="margin-top: 0px; padding-top: 0px;">
 								        <img ng-src="{{slide.image}}" width="400" height="300">
 								      </uib-slide>
 								    </uib-carousel> 

@@ -24,18 +24,19 @@
         }
         else return false
     }
+
 	function toggled(open) {
 		$log.log('Dropdown is now: ', open);
 	}
-	function toggleDropdown($event) {
-		$event.preventDefault();
-		$event.stopPropagation();
+	function toggleDropdown(event) {
+		event.preventDefault();
+		event.stopPropagation();
 		vm.status.isopen = !vm.status.isopen;
 	}
 	function remove(id){
 		$Shop.remove(id);
 	}
-	//vm.appendToEl = angular.element(document.querySelector('#dropdown-long-content'));
+	vm.appendToEl = angular.element(document.querySelector('#dropdown-long-content'));
 
   }
 })();

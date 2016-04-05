@@ -18,6 +18,7 @@
 			vm.add = add;
 			vm.remove = remove;
 			vm.destroy = destroy;
+			vm.dataPayPal = dataPayPal;
 			$rootScope.udpShopContent = [];
 			$rootScope.udpShopTotalPrice = 0;
 			$rootScope.udpShopTotalProducts = 0;
@@ -154,32 +155,32 @@
 			* que ha establecido el usuario previamente
 			* @param - userData - datos de la tienda para el formulario de paypal
 			*/
-			// function dataPayPal(userData)
-			// {
-			// 	var htmlForm = "";
-			// 	for (var i = 0, len = $rootScope.udpShopContent.length; i < len; i++) 
-			// 	{
-			// 		var product = $rootScope.udpShopContent[i];
-			// 		var currentProduct = i + 1;
-			// 		htmlForm += "<input type='hidden' name='item_number_"+currentProduct+"' value="+product.id+" />";
-			// 		htmlForm += "<input type='hidden' name='item_name_"+currentProduct+"' value='"+product.name+"' />";
-			// 		htmlForm += "<input type='hidden' name='quantity_"+currentProduct+"' value="+product.qty+" />";
-			// 		htmlForm += "<input type='hidden' name='amount_"+currentProduct+"' value="+product.price.toFixed(2)+" />";
-			// 	}
-			// 	htmlForm += "<input type='hidden' name='cmd' value='"+userData.cmd+"' />";
-			// 	htmlForm += "<input type='hidden' name='upload' value='"+userData.upload+"' />";
-			// 	htmlForm += "<input type='hidden' name='business' value='"+userData.business+"' />";
-			// 	htmlForm += "<input type='hidden' name='cancel_return' value='"+userData.cancelUrl+"' />";
-			// 	htmlForm += "<input type='hidden' name='cbt' value='"+userData.msgReturn+"' />";
-			// 	htmlForm += "<input type='hidden' name='return' value='"+userData.successUrl+"' />";
-			// 	htmlForm += "<input type='hidden' name='rm' value="+userData.rm+ " />";
-			// 	htmlForm += "<input type='hidden' name='lc' value='"+userData.lc+"' />";
-			// 	htmlForm += "<input type='hidden' name='currency_code' value='"+userData.currencyCode+"' />";
-			// 	htmlForm += "<input type='hidden' name='cbt' value='"+userData.cbt+"' />";
-			// 	htmlForm += "<input type='image' src='https//:www.paypal.com/es_ES/i/btn/btn_buynow_SM.gif' border='0' name='submit' />";
-			// 	htmlForm += "<img border='0' src='https//:www.paypal.com/es_ES/i/scr/pixel.gif' width='1' height='1' />";
-				
-			// 	$(userData.formClass).html("").append(htmlForm);
-			// }
+			function dataPayPal(userData)
+			{
+				var htmlForm = "";
+				for (var i = 0, len = $rootScope.udpShopContent.length; i < len; i++) 
+				{
+					var product = $rootScope.udpShopContent[i];
+					var currentProduct = i + 1;
+					htmlForm += "<input type='hidden' name='item_number_"+currentProduct+"' value="+product.id+" />";
+					htmlForm += "<input type='hidden' name='item_name_"+currentProduct+"' value='"+product.name+"' />";
+					htmlForm += "<input type='hidden' name='quantity_"+currentProduct+"' value="+product.qty+" />";
+					htmlForm += "<input type='hidden' name='amount_"+currentProduct+"' value="+product.price.toFixed(2)+" />";
+				}
+				htmlForm += "<input type='hidden' name='cmd' value='"+userData.cmd+"' />";
+				htmlForm += "<input type='hidden' name='upload' value='"+userData.upload+"' />";
+				htmlForm += "<input type='hidden' name='business' value='"+userData.business+"' />";
+				htmlForm += "<input type='hidden' name='cancel_return' value='"+userData.cancelUrl+"' />";
+				htmlForm += "<input type='hidden' name='cbt' value='"+userData.msgReturn+"' />";
+				htmlForm += "<input type='hidden' name='return' value='"+userData.successUrl+"' />";
+				htmlForm += "<input type='hidden' name='rm' value="+userData.rm+ " />";
+				htmlForm += "<input type='hidden' name='lc' value='"+userData.lc+"' />";
+				htmlForm += "<input type='hidden' name='currency_code' value='"+userData.currencyCode+"' />";
+				htmlForm += "<input type='hidden' name='cbt' value='"+userData.cbt+"' />";
+				htmlForm += "<input type='image' ng-src='https//:www.paypal.com/es_ES/i/btn/btn_buynow_SM.gif' border='0' name='submit' />";
+				htmlForm += "<img border='0' ng-src='https//:www.paypal.com/es_ES/i/scr/pixel.gif' width='1' height='1' />";
+				angular.element("#formPaypal").html("").append(htmlForm);
+				//angular.element((userData.formClass).html("").append(htmlForm));
+			}
 		}
 })();

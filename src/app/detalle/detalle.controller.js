@@ -67,6 +67,8 @@
 					templateUrl: 'app/modal/modalAviso.html',
 					controller: 'ModalController',
 					controllerAs: 'modal',
+					backdrop: 'static',
+  					keyboard: true,
 					size: size,
 					resolve: {
 						items: function () {
@@ -80,6 +82,8 @@
 				templateUrl: 'app/modal/modal.html',
 				controller: 'ModalController',
 				controllerAs: 'modal',
+				backdrop: 'static',
+  				keyboard: true,
 				size: size,
 				resolve: {
 					items: function () {

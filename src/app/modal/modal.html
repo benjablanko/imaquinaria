@@ -24,9 +24,9 @@
 
    </div>
     <div class="modal-footer ng-scope">
-        <button class="btn btn-danger" type="button" ng-click="modal.cancel()">Continue Shoping</button>
-        <button ng-hide="showme" class="btn btn btn-primary" type="button" ng-click="modal.ok()">Checkout</button>
-        <button ng-show="showme" class="btn btn btn-primary" type="button" ng-click="modal.ok()">Send</button>
+        <button class="btn btn-danger" type="button" ng-click="modal.cancel($event)">Continue Shoping</button>
+        <button ng-hide="showme" class="btn btn btn-primary" type="button" ng-click="modal.ok($event)">Checkout</button>
+        <button ng-show="showme" class="btn btn btn-primary" type="button" ng-click="modal.ok($event)">Send</button>
     </div>
     </form>
 </div>

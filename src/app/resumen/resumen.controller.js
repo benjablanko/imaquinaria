@@ -8,6 +8,8 @@
   /** @ngInject */
   function ResumenController($rootScope, $http, $uibModal, $Shop, $window) {
     var vm = this;
+    vm.userDataPayPal = userDataPayPal;
+    vm.paypalData = paypalData;
     vm.enviarEmail = enviarEmail;
     vm.remove = remove;
     vm.roundCurrency = roundCurrency;
@@ -15,17 +17,26 @@
     vm.validEmail = validEmail;
     vm.errorForm = false;
     vm.getTotal = getTotal;
+    vm.select = select;
     vm.EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
     vm.animationsEnabled = true;
     
     vm.costoEnvio = 0;
     $http.get('json/envio.json').success(function (data) {
         vm.envio =  data;
-    });
 
-      
+    });
+    function select (){
+          vm.costoEnvio = 0;
+
+    }    
     function getTotal(){
-      return parseFloat(vm.roundCurrency($rootScope.udpShopTotalPrice))+parseFloat(vm.costoEnvio);
+      if(vm.costoEnvio == "$ 4 - 8 mil pesos nacional"){
+        return vm.roundCurrency($rootScope.udpShopTotalPrice);
+      }
+      else{
+        return parseFloat(vm.roundCurrency($rootScope.udpShopTotalPrice))+parseFloat(vm.costoEnvio);
+      }
     }
     function roundCurrency (total){
       return total.toFixed(2);
@@ -37,9 +48,11 @@
       if(vm.persona && vm.persona.name && vm.persona.email && validEmail(vm.persona.email) && vm.persona.adress && vm.persona.country && vm.persona.city  && vm.persona.zipcode && vm.persona.region){
         vm.errorForm = false;
         vm.email = $rootScope.email;
-        vm.mensaje = "";
+        vm.mensaje = '';
+    
+
         vm.mensaje += "<html><body>";
-        vm.mensaje += " <h2>Datos Persona: </h2> <br><br><br> <strong>Nombre: </strong>";
+        vm.mensaje += " <h2>Shipping Detail: </h2> <br><Information br><br> <strong>Name: </strong>";
         vm.mensaje +=   vm.persona.name  ;
         vm.mensaje += "  <br> <br> <br> <strong> Email:</strong> " +vm.persona.email + " <br> <br> <br> ";
         vm.mensaje += "  <strong> Adress:</strong> "+ vm.persona.adress+ " <br> <br> <br> ";
@@ -53,20 +66,21 @@
         if(vm.persona.comments){
           vm.mensaje += "<strong> Comments:  </strong> " + vm.persona.comments +"<br> <br> <br>";
         }
-        vm.mensaje = vm.mensaje + '<table rules="all" style="border-color: #666;" cellpadding="10" ><thead><tr><th>Id</th><th>Nombre</th><th>Cantidad</th><th>Precio unidad</th><th>Total producto</th></tr></thead><tbody>';
+        vm.mensaje = vm.mensaje + '<table rules="all" style="border-color: #666;" cellpadding="10" ><thead><tr><th>Id</th><th>Product</th><th>Quantity</th><th>Unit Price</th><th>Sub total</th></tr></thead><tbody>';
  
         for (var i = 0; i < $rootScope.udpShopContent.length; i++) {
           vm.mensaje = vm.mensaje + "<tr>"+ "<td>" + $rootScope.udpShopContent[i].id + "</td>"+ "<td>" + $rootScope.udpShopContent[i].name + "</td>"+"<td>" +$rootScope.udpShopContent[i].qty + "</td>"+"<td>" + $rootScope.udpShopContent[i].price + "</td>" +"<td>"+ $rootScope.udpShopContent[i].price * $rootScope.udpShopContent[i].qty + "</td>" +"</tr>";
         }
-         vm.mensaje = vm.mensaje + "<tr>" +
-        "<td colspan='6'>Precio total del carrito: " + vm.getTotal() + "</td>" +" <tr>" +" <tr>" +
-        " <td colspan='6'>Número total de artículos: " + roundCurrency($rootScope.udpShopTotalProducts) + "</td> " +
+         vm.mensaje += "<tr>";
+         vm.mensaje += "<td colspan='6'>Shipping cost: " + vm.costoEnvio + "</td>" +" <tr>" +" <tr>" +
+        "<td colspan='6'>Total price: " + vm.getTotal() + "</td>" +" <tr>" +" <tr>" +
+        " <td colspan='6'>Number of products: " + roundCurrency($rootScope.udpShopTotalProducts) + "</td> " +
         " <tr>" +
         " <tr>" +
         " <tr>" +  
         "</tbody>"+
         "</table>";
-        vm.mensaje = vm.mensaje + "</body></html>";
+        
         $http({
             method: 'POST',
             url: "/p6/imaquinariaserver/mail.php",
@@ -88,7 +102,30 @@
       else{
         vm.errorForm = true;
       }  
-    } 
+    }
+    /**
+  * @desc - establecemos los datos para el formulario de paypal
+  * @return - object
+  */
+  function paypalData(){
+    $Shop.dataPayPal(vm.userDataPayPal());
+  }
+  function userDataPayPal(){
+    var userData = {};
+    userData.cmd = "_cart";
+    userData.upload = "1";
+    userData.business = "benjaminblancoseibert@gmail.com";
+    userData.currencyCode = "EUR";
+    userData.lc = "EU";
+    userData.rm = 2;
+    //url retorno paypal lado server, envia data post
+    userData.successUrl = "http://localhost/cartAngularServer/return.php";
+    userData.cancelUrl = "http://localhost:3000/#/";
+    userData.cbt = "Volver a la tienda";
+    userData.formClass = "#formPaypal";
+    return userData;
+  }
+ 
     function remove(id){
       $Shop.remove(id);
     }

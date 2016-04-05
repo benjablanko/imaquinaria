@@ -1,5 +1,9 @@
 [
 	{
+		"continente": "Select cost",
+		"costo": 0
+	},
+	{
 		"continente": "Africa",
 		"costo": 12.68
 	},
@@ -19,5 +23,9 @@
 	{
 		"continente": "Europe",
 		"costo": 11.37
+	},
+	{
+		"continente": "Chile",
+		"costo": "$ 4 - 8 mil pesos nacional"
 	}
 ]
