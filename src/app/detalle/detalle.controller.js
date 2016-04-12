@@ -68,7 +68,7 @@
 					controller: 'ModalController',
 					controllerAs: 'modal',
 					backdrop: 'static',
-  					keyboard: true,
+					keyboard: true,
 					size: size,
 					resolve: {
 						items: function () {
@@ -83,7 +83,7 @@
 				controller: 'ModalController',
 				controllerAs: 'modal',
 				backdrop: 'static',
-  				keyboard: true,
+				keyboard: true,
 				size: size,
 				resolve: {
 					items: function () {
@@ -97,7 +97,7 @@
 			modalCompra.result.then(function (selectedItem) {
 				vm.selected = selectedItem;
 			}, function () {
-				$log.info('Modal dismissed at: ' + new Date());
+				//$log.info('Modal dismissed at: ' + new Date());
 			});
 		}
 

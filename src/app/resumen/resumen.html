@@ -20,10 +20,11 @@
                 </tr>
             </thead>
             <tbody>       
-                <tr class ="text-center"ng-repeat="prod in udpShopContent">
+                <tr class ="text-center" ng-repeat="prod in udpShopContent">
                     <td>{{prod.name}}</td>
                     <td>{{prod.id}}</td>
                     <td>{{resumen.roundCurrency(prod.price)}}</td>
+
                     <td>{{prod.qty}}</td>
                     <td>{{resumen.roundCurrency(prod.price * prod.qty)}}</td>
                     <td align="center"><button ng-click="resumen.remove(prod.id)" class="btn btn-xs btn-danger">x</button></td>
@@ -39,7 +40,7 @@
                         <select class="form-control"  ng-model='resumen.costoEnvio' required ng-options='option.costo as option.continente for option in resumen.envio'></select>
                         </td>
                       <td  colspan="2" class="text-center">
-                        <input class="form-control required email" id="user_email" ng-model="resumen.costoEnvio"  type="text"/>
+                        <input class="form-control required email" id="user_email" ng-model="resumen.costoEnvio"  type="text" disabled/>
                     </td>
                 </tr>
                 <tr>
@@ -61,11 +62,7 @@
     </div>
     
 
-<!--añadimos nuestro formulario de paypal-->
-    <!--    <form name="cart" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" id="formPaypal">
-            {{ resumen.paypalData() }}
-        </form>
--->
+
     <form name="myForm">
         <div class ="datosPersona col-xs-12 col-sm-8 col-sm-offset-2">
             <div class='row'>
@@ -80,7 +77,7 @@
                     <div class='col-sm-12'>
                         <div class='form-group'>
                             <label for="name">Name*</label>
-                            <input class="form-control required email" id="user_email" ng-model="resumen.persona.name"  type="text"/>
+                            <input class="form-control required email" id="user_email" ng-model="resumen.persona.name"  required="true" type="text"/>
                         </div>
                     </div>
                 </div>
@@ -88,7 +85,7 @@
                     <div class='col-sm-12'>
                         <div class='form-group'>
                             <label for="user_email">Email*</label>
-                                <input ng-class="contacto.clases" class="form-control" ng-model="resumen.persona.email" id="id-email" name="email" placeholder=""/>
+                                <input ng-class="contacto.clases" class="form-control" ng-model="resumen.persona.email" required="true" id="id-email" name="email" placeholder=""/>
                         </div>
                     </div>
                 </div>
@@ -96,13 +93,13 @@
                     <div class='col-sm-9'>    
                         <div class='form-group'>
                             <label for="user_title">Shipping Adress*</label>
-                            <input class="form-control" id="user_title" ng-model="resumen.persona.adress"  type="text" />
+                            <input class="form-control" id="user_title" ng-model="resumen.persona.adress"  required="true" type="text" />
                         </div>  
                     </div>
                     <div class='col-sm-3'>
                         <div class='form-group'>
                             <label for="user_firstname">Block N°</label>
-                            <input class="form-control" id="user_firstname" ng-model="resumen.persona.block" required="true"  type="text" />
+                            <input class="form-control" id="user_firstname" ng-model="resumen.persona.block"   type="text" />
                         </div>
                     </div>
                 </div>
@@ -110,7 +107,7 @@
                     <div class='col-sm-7'>    
                       <div class='form-group'>
                             <label for="user_title">City*</label>
-                            <input class="form-control" id="user_title" ng-model="resumen.persona.city"  type="text" />
+                            <input class="form-control" id="user_title" ng-model="resumen.persona.city" required="true" type="text" />
                         </div>
                     </div>
                     <div class='col-sm-5'>
@@ -124,13 +121,13 @@
                     <div class='col-sm-7'>    
                         <div class='form-group'>
                             <label for="user_title">Region*</label>
-                            <input class="form-control" id="user_title" ng-model="resumen.persona.region"  type="text" />
+                            <input class="form-control" id="user_title" ng-model="resumen.persona.region"  required="true" type="text" />
                         </div>
                     </div>
                     <div class='col-sm-5'>
                         <div class='form-group'>
                             <label for="user_firstname">Zip Code*</label>
-                            <input class="form-control" id="user_firstname" ng-model="resumen.persona.zipcode" type="text" />
+                            <input class="form-control" id="user_firstname" ng-model="resumen.persona.zipcode" required="true" type="text" />
                         </div>
                     </div>
                 </div>
@@ -143,7 +140,16 @@
                     </div>
                 </div>
                 <div class='row' style="margin-bottom: 100px;"> 
-                    <div class='col-xs-12 col-sm-4 col-sm-offset-4'>  
+ 
+                    <div class='col-xs-6 col-sm-6' id ="paypalContent">  
+                    <!--añadimos nuestro formulario de paypal-->
+
+                        <!--añadimos nuestro formulario de paypal-->
+                            {{ resumen.paypalData() }}
+                            
+                        
+                    </div>
+                    <div class='col-xs-6 col-sm-6'>  
                         <button class="btn btn-primary btn-block" ng-click="resumen.enviarEmail()"  type="button">Submit</button>
                     </div>
                 </div>

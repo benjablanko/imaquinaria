@@ -7,9 +7,9 @@
 		.service('Shop',Shop);
 
 		
-		Shop.$inject = ['$rootScope']; 
+		Shop.$inject = ['$rootScope','$sessionStorage']; 
 
-		function Shop($rootScope) {
+		function Shop($rootScope, $sessionStorage) {
 			var vm = this;
 			vm.items = [];
 			vm.minimRequeriments = minimRequeriments;
@@ -22,7 +22,12 @@
 			$rootScope.udpShopContent = [];
 			$rootScope.udpShopTotalPrice = 0;
 			$rootScope.udpShopTotalProducts = 0;
-			
+			debugger;
+			if($sessionStorage.exist === "true"){
+				$rootScope.udpShopContent = JSON.parse($sessionStorage.udpShopContent)
+				$rootScope.udpShopTotalPrice = parseFloat($sessionStorage.udpShopTotalPrice);
+				$rootScope.udpShopTotalProducts = parseInt($sessionStorage.udpShopTotalProducts);
+			}
 
 			function minimRequeriments(product)
 			{
@@ -62,13 +67,22 @@
 			function add(producto)
 			{
 				try{
+					
+					$sessionStorage.exist = "true";
 					//comprobamos si el producto cumple los requisitos
 					this.minimRequeriments(producto);
 					//si el producto existe le actualizamos la cantidad
 					if(this.checkExistsProduct(producto,$rootScope.udpShopContent) === true)
 					{
 						$rootScope.udpShopTotalPrice += parseFloat(producto.price * producto.qty,10);
-						$rootScope.udpShopTotalProducts += producto.qty;
+
+						$rootScope.udpShopTotalProducts += 	producto.qty;
+
+						$sessionStorage.udpShopTotalPrice  = $rootScope.udpShopTotalPrice.toString();
+
+						$sessionStorage.udpShopTotalProducts = $rootScope.udpShopTotalProducts.toString();
+
+						$sessionStorage.udpShopContent = JSON.stringify($rootScope.udpShopContent);
 						return {"msg":"updated"};
 					}
 					//en otro caso, lo añadimos al carrito
@@ -77,11 +91,16 @@
 						$rootScope.udpShopTotalPrice += parseFloat(producto.price * producto.qty,10);
 						$rootScope.udpShopTotalProducts += producto.qty;
 						$rootScope.udpShopContent.push(producto);
+
+						$sessionStorage.udpShopTotalPrice  = $rootScope.udpShopTotalPrice.toString();
+						$sessionStorage.udpShopTotalProducts = $rootScope.udpShopTotalProducts.toString();
+						$sessionStorage.udpShopContent = JSON.stringify($rootScope.udpShopContent);
 						return {"msg":"insert"};
 					}
 				}
 				catch(error)
-				{
+				{	
+					$sessionStorage.exist = "false";
 					alert("Error " + error);
 				}
 			}
@@ -112,6 +131,7 @@
 
 			function remove(id)
 			{
+				debugger;
 				try{
 					var i, len;
 					for (i = 0, len = $rootScope.udpShopContent.length; i < len; i++) 
@@ -121,9 +141,15 @@
 							$rootScope.udpShopTotalPrice -= parseFloat($rootScope.udpShopContent[i].price * $rootScope.udpShopContent[i].qty,10);
 							$rootScope.udpShopTotalProducts -= $rootScope.udpShopContent[i].qty;
 							$rootScope.udpShopContent.splice(i, 1);
+
+							$sessionStorage.udpShopTotalPrice  = $rootScope.udpShopTotalPrice.toString();
+							$sessionStorage.udpShopTotalProducts = $rootScope.udpShopTotalProducts.toString();
+							$sessionStorage.udpShopContent = JSON.stringify($rootScope.udpShopContent);
+
 							if(isNaN($rootScope.udpShopTotalPrice))
 							{
-								$rootScope.udpShopTotalPrice = 0;
+								$sessionStorage.$reset();
+								$sessionStorage.exist = "false";
 							}
 							return {"msg":"deleted"};
 						}
@@ -141,6 +167,9 @@
 			function destroy()
 			{
 				try{
+					$sessionStorage.$reset();
+					$sessionStorage.exist = "false";
+
 					$rootScope.udpShopContent = [];
 					$rootScope.udpShopTotalPrice = 0;
 					$rootScope.udpShopTotalProducts = 0;
@@ -150,13 +179,57 @@
 					alert("Error " + error);
 				}
 			}
+
+		function dataPayPal(userData, costoEnvio)
+		{
+			var htmlForm = "<form name='cart' action='https://www.sandbox.paypal.com/cgi-bin/webscr' method='post' id='formPaypal'>";
+			for (var i = 0, len = $rootScope.udpShopContent.length; i < len; i++) 
+			{
+				var product = $rootScope.udpShopContent[i];
+				var currentProduct = i + 1;
+				htmlForm += "<input type='hidden' name='item_number_"+currentProduct+"' value="+product.id+" />";
+				htmlForm += "<input type='hidden' name='item_name_"+currentProduct+"' value='"+product.name+"' />";
+				htmlForm += "<input type='hidden' name='quantity_"+currentProduct+"' value="+product.qty+" />";
+				htmlForm += "<input type='hidden' name='amount_"+currentProduct+"' value="+product.price.toFixed(2)+" />";
+			}
+
+				currentProduct = currentProduct + 1;
+				htmlForm += "<input type='hidden' name='item_number_"+currentProduct+"' value="+123111+" />";
+				htmlForm += "<input type='hidden' name='item_name_"+currentProduct+"' value='"+"shipping Cost"+"' />";
+				htmlForm += "<input type='hidden' name='quantity_"+currentProduct+"' value="+1+" />";
+				htmlForm += "<input type='hidden' name='amount_"+currentProduct+"' value="+costoEnvio+" />";
+
+
+			htmlForm += "<input type='hidden' name='cmd' value='"+userData.cmd+"' />";
+			htmlForm += "<input type='hidden' name='upload' value='"+userData.upload+"' />";
+			htmlForm += "<input type='hidden' name='business' value='"+userData.business+"' />";
+			htmlForm += "<input type='hidden' name='cancel_return' value='"+userData.cancelUrl+"' />";
+			htmlForm += "<input type='hidden' name='cbt' value='"+userData.msgReturn+"' />";
+			htmlForm += "<input type='hidden' name='return' value='"+userData.successUrl+"' />";
+			htmlForm += "<input type='hidden' name='rm' value="+userData.rm+ " />";
+			htmlForm += "<input type='hidden' name='lc' value='"+userData.lc+"' />";
+			htmlForm += "<input type='hidden' name='currency_code' value='"+userData.currencyCode+"' />";
+			htmlForm += "<input type='hidden' name='cbt' value='"+userData.cbt+"' />";
+			htmlForm += "<input type='image' src='https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif' border='0' name='submit' alt='PayPal - The safer, easier way to pay online!'>";
+			htmlForm += "<img alt=' border='0' src='https://www.paypalobjects.com/es_XC/i/scr/pixel.gif' width='1' height='1'>";
+			htmlForm += "</form>";
+			
+
+	
+
+			$("#paypalContent").html("").append(htmlForm);
+			//$("#asd").html("").append(htmlForm);
+		}
+
+
 			/**
 			* @desc - prepara el formulario hacía paypal con el contenido del carrito y los datos
 			* que ha establecido el usuario previamente
 			* @param - userData - datos de la tienda para el formulario de paypal
 			*/
-			function dataPayPal(userData)
+			/*function dataPayPal(userData, costoEnvio)
 			{
+
 				var htmlForm = "";
 				for (var i = 0, len = $rootScope.udpShopContent.length; i < len; i++) 
 				{
@@ -167,6 +240,13 @@
 					htmlForm += "<input type='hidden' name='quantity_"+currentProduct+"' value="+product.qty+" />";
 					htmlForm += "<input type='hidden' name='amount_"+currentProduct+"' value="+product.price.toFixed(2)+" />";
 				}
+				currentProduct = currentProduct + 1;
+				htmlForm += "<input type='hidden' name='item_number_"+currentProduct+"' value="+123111+" />";
+				htmlForm += "<input type='hidden' name='item_name_"+currentProduct+"' value='"+"shipping Cost"+"' />";
+				htmlForm += "<input type='hidden' name='quantity_"+currentProduct+"' value="+1+" />";
+				htmlForm += "<input type='hidden' name='amount_"+currentProduct+"' value="+costoEnvio+" />";
+
+
 				htmlForm += "<input type='hidden' name='cmd' value='"+userData.cmd+"' />";
 				htmlForm += "<input type='hidden' name='upload' value='"+userData.upload+"' />";
 				htmlForm += "<input type='hidden' name='business' value='"+userData.business+"' />";
@@ -177,10 +257,11 @@
 				htmlForm += "<input type='hidden' name='lc' value='"+userData.lc+"' />";
 				htmlForm += "<input type='hidden' name='currency_code' value='"+userData.currencyCode+"' />";
 				htmlForm += "<input type='hidden' name='cbt' value='"+userData.cbt+"' />";
-				htmlForm += "<input type='image' ng-src='https//:www.paypal.com/es_ES/i/btn/btn_buynow_SM.gif' border='0' name='submit' />";
-				htmlForm += "<img border='0' ng-src='https//:www.paypal.com/es_ES/i/scr/pixel.gif' width='1' height='1' />";
-				angular.element("#formPaypal").html("").append(htmlForm);
+				debugger;
+				//$("#formPaypal2").html("").append(htmlForm);
+				$("#formPaypal").html("").append(htmlForm);
+				//angular.element(("#formPaypal").html("").append(htmlForm));
 				//angular.element((userData.formClass).html("").append(htmlForm));
-			}
+			}*/
 		}
 })();

@@ -1,0 +1,17 @@
+[
+	{
+		"id": 1,
+		"title": "Model Kits",
+		"image": 1 
+	},
+	{
+		"id": 2,
+		"title": "Art",
+		"image": 2
+	},
+	{
+		"id": 3,
+		"title": "Accessories",
+		"image": 3
+	}
+]

@@ -26,7 +26,7 @@
     }
 
 	function toggled(open) {
-		$log.log('Dropdown is now: ', open);
+		//$log.log('Dropdown is now: ', open);
 	}
 	function toggleDropdown(event) {
 		event.preventDefault();

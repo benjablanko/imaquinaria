@@ -3,7 +3,8 @@
 
   angular
     .module('miApp')
-    .config(routerConfig);
+    .config(routerConfig)
+    .run(run);
 
   var nav = {
     templateUrl: 'app/nav/nav.html',
@@ -16,8 +17,8 @@
       controllerAs: 'detalle'         
   };
   /** @ngInject */
-
   function routerConfig($stateProvider, $urlRouterProvider) {
+
     $stateProvider
       .state('home', {
         url: '/',
@@ -29,10 +30,10 @@
              controller: 'CarouselController',
              controllerAs: 'carousel'
             },
-            
-            // the child views will be defined here (absolutely named)
             'tienda': {
-              templateUrl: 'app/tienda/tienda.html'
+              templateUrl: 'app/tienda/tienda.html',
+              controller: 'TiendaController',
+              controllerAs: 'tienda'
             },
             'contacto':{
               templateUrl: 'app/contacto/contacto.html',
@@ -93,6 +94,17 @@
 
     $urlRouterProvider.otherwise('/');
   }
-
+  run.$inject = ['$rootScope', '$location', '$window'];
+    function run($rootScope, $location, $window) {
+        // initialise google analytics
+        $window.ga('create', 'UA-XXXXXXXX-X', 'auto');
+ 
+        // track pageview on state change
+        $rootScope.$on('$stateChangeSuccess', function (event) {
+          if (!$window.ga)
+            return;
+          $window.ga('send', 'pageview', $location.path());
+        });
+    }
 })();
   
