@@ -19,12 +19,14 @@
 			vm.remove = remove;
 			vm.destroy = destroy;
 			vm.dataPayPal = dataPayPal;
+			vm.setSessionStorage = setSessionStorage;
+
 			$rootScope.udpShopContent = [];
 			$rootScope.udpShopTotalPrice = 0;
 			$rootScope.udpShopTotalProducts = 0;
-			debugger;
-			if($sessionStorage.exist === "true"){
-				$rootScope.udpShopContent = JSON.parse($sessionStorage.udpShopContent)
+
+			if($sessionStorage.udpShopTotalProducts != undefined){
+				$rootScope.udpShopContent = angular.fromJson($sessionStorage.udpShopContent)
 				$rootScope.udpShopTotalPrice = parseFloat($sessionStorage.udpShopTotalPrice);
 				$rootScope.udpShopTotalProducts = parseInt($sessionStorage.udpShopTotalProducts);
 			}
@@ -68,7 +70,7 @@
 			{
 				try{
 					
-					$sessionStorage.exist = "true";
+					
 					//comprobamos si el producto cumple los requisitos
 					this.minimRequeriments(producto);
 					//si el producto existe le actualizamos la cantidad
@@ -78,11 +80,8 @@
 
 						$rootScope.udpShopTotalProducts += 	producto.qty;
 
-						$sessionStorage.udpShopTotalPrice  = $rootScope.udpShopTotalPrice.toString();
-
-						$sessionStorage.udpShopTotalProducts = $rootScope.udpShopTotalProducts.toString();
-
-						$sessionStorage.udpShopContent = JSON.stringify($rootScope.udpShopContent);
+						setSessionStorage();
+						
 						return {"msg":"updated"};
 					}
 					//en otro caso, lo añadimos al carrito
@@ -92,9 +91,8 @@
 						$rootScope.udpShopTotalProducts += producto.qty;
 						$rootScope.udpShopContent.push(producto);
 
-						$sessionStorage.udpShopTotalPrice  = $rootScope.udpShopTotalPrice.toString();
-						$sessionStorage.udpShopTotalProducts = $rootScope.udpShopTotalProducts.toString();
-						$sessionStorage.udpShopContent = JSON.stringify($rootScope.udpShopContent);
+						setSessionStorage();
+
 						return {"msg":"insert"};
 					}
 				}
@@ -142,14 +140,11 @@
 							$rootScope.udpShopTotalProducts -= $rootScope.udpShopContent[i].qty;
 							$rootScope.udpShopContent.splice(i, 1);
 
-							$sessionStorage.udpShopTotalPrice  = $rootScope.udpShopTotalPrice.toString();
-							$sessionStorage.udpShopTotalProducts = $rootScope.udpShopTotalProducts.toString();
-							$sessionStorage.udpShopContent = JSON.stringify($rootScope.udpShopContent);
+							setSessionStorage();
 
 							if(isNaN($rootScope.udpShopTotalPrice))
 							{
 								$sessionStorage.$reset();
-								$sessionStorage.exist = "false";
 							}
 							return {"msg":"deleted"};
 						}
@@ -168,8 +163,6 @@
 			{
 				try{
 					$sessionStorage.$reset();
-					$sessionStorage.exist = "false";
-
 					$rootScope.udpShopContent = [];
 					$rootScope.udpShopTotalPrice = 0;
 					$rootScope.udpShopTotalProducts = 0;
@@ -220,7 +213,12 @@
 			$("#paypalContent").html("").append(htmlForm);
 			//$("#asd").html("").append(htmlForm);
 		}
+		function setSessionStorage(){
+			$sessionStorage.udpShopTotalPrice  = $rootScope.udpShopTotalPrice.toString();
+			$sessionStorage.udpShopTotalProducts = $rootScope.udpShopTotalProducts.toString();
+			$sessionStorage.udpShopContent = angular.toJson($rootScope.udpShopContent);
 
+		}
 
 			/**
 			* @desc - prepara el formulario hacía paypal con el contenido del carrito y los datos

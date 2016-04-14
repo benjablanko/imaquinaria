@@ -3,14 +3,14 @@
     <div calss ="container">
         <div class="row">
             <h2 class="text-center">SHOP</h2>
-            <img  style ="display: block; margin-left: auto; margin-right: auto" src="assets/images/underline-white.png">
+            <img  style ="display: block; margin-left: auto; margin-right: auto" ng-src="assets/images/underline-white.png">
         </div>
         <div class="tienda-item-container row row-centered">
             <div ng-repeat ="t in tienda.datos"  class="col-centered col-sm-3"> 
                 <a ng-href="#/detalle/{{t.id}}">
                     <img ng-src="assets/images/shop/{{t.image}}.png" alt="Generic placeholder image">
                 </a>
-                <h3>{{tienda.title}}</h3> 
+                <h3>{{t.title}}</h3> 
             </div><!-- /.col-sm-3 -->
         </div>
     </div><!-- /.container -->
