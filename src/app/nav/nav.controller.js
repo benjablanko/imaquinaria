@@ -29,8 +29,6 @@
 		//$log.log('Dropdown is now: ', open);
 	}
 	function toggleDropdown(event) {
-		event.preventDefault();
-		event.stopPropagation();
 		vm.status.isopen = !vm.status.isopen;
 	}
 	function remove(id){

@@ -26,9 +26,9 @@
             // the main template will be placed here (relatively named)
             'nav': nav,
             'carousel': {
-             templateUrl: 'app/carousel/carousel.html',
-             controller: 'CarouselController',
-             controllerAs: 'carousel'
+              templateUrl: 'app/carousel/carousel.html',
+              controller: 'CarouselController',
+              controllerAs: 'carousel'
             },
             'tienda': {
               templateUrl: 'app/tienda/tienda.html',
