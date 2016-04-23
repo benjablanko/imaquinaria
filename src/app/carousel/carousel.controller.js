@@ -10,10 +10,9 @@ angular
 	vm.myInterval = 5000;
 	vm.noWrapSlides = false;
 	vm.slides = [];
-	vm.addSlide = addSlide;
-
+	
  	$http.get('json/carousel.json').success(function (data) {
-        vm.carouselData =  data;
+        vm.carouselData =  data;		
     });
 
 }

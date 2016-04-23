@@ -1,28 +1,23 @@
 [
-	{
-		"id": "c1",
-		"titulo": "titulo",
-		"mensaje": "el mensaje"
-	},
 
 	{
-		"id": "c2",
-		"titulo": "titulo",
-		"mensaje": "el mensaje"
+		"id": 0,
+		"titulo": "We are Imaquinaria",
+		"mensaje": "We like to imagine things, then we turn them into model kits for you to build, paint and collect!"
 	},
 	{
-		"id": "c3",
-		"titulo": "titulo",
-		"mensaje": "el mensaje"
+		"id": 1,
+		"titulo": "",
+		"mensaje": "We are a chilean based conceptart studio focused on the creation of unique, fantasy and sci-fi resin models, made with commitment, care for detail, and a local, latin flavour"
+	},
+	{	
+		"id": 2,	
+		"titulo": "",
+		"mensaje": "We build fictions and imagery, we look for a local  sense of identity through blending  popular, ethnic and historical elements of culture from all around, mixed, mashed up and reinterpreted from our corner of the world"
 	},
 	{
-		"id": "c4",
-		"titulo": "titulo",
-		"mensaje": "el mensaje"
-	},
-	{
-		"id": "c5",
-		"titulo": "titulo",
-		"mensaje": "el mensaje"
+		"id": 3,
+		"titulo": "",
+		"mensaje": "100% original designs turned into collectable resin model kits. We aim at making quality products that feed your imagination, and ignite that rebel spirit within you!"
 	}
 ]

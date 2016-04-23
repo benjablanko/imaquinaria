@@ -2,10 +2,10 @@
 	<div class ="row row-centered">
 	    <uib-carousel interval="carousel.myInterval" no-wrap="noWrapSlides">
 	      <uib-slide ng-repeat="slide in carousel.carouselData" active="slide.active" index="slide.id">
-	        <img ng-src="assets/images/carousel/{{slide.id}}.png" class="img-carousel" style="max-height: 600px;width: 926px; min-height: 270px; margin-top: 25px;">
+	        <img ng-src="assets/images/carousel/c{{slide.id}}.png" class="img-carousel" style="max-height: 600px;width: 926px; min-height: 270px; margin-top: 25px;">
 	        <div class="carousel-caption">
-	        	<h4>{{slide.title}}</h4>
-	        	<h5>{{slide.text}}</h5>
+	        	<h4>{{slide.titulo}}</h4>
+	        	<h5>{{slide.mensaje}}</h5>
 	      	</div>
 	      </uib-slide>
 	    </uib-carousel>
