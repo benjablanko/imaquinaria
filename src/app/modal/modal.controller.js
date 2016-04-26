@@ -31,7 +31,7 @@
        return vm.EMAIL_REGEXP.test(email);     
     }
 
-    function ok(event) {
+    function ok() {
       if($rootScope.showme){
         if(vm.email != undefined && vm.email.length > 0 && vm.validEmail(vm.email)){
           $rootScope.email = vm.email;
@@ -53,7 +53,7 @@
           var mensaje = "<h1>Notificar a " + vm.email + " por el producto: " + $rootScope.productoAviso.name + "</h1>";
           $http({
             method: 'POST',
-            url: "/p6/imaquinariaserver/mail.php",
+            url: "imaquinariaserver/mail.php",
             data: "nombre=" + "&email=" + vm.email +"&mensaje=" + mensaje +"&cliente=0",
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
           })
@@ -65,7 +65,7 @@
 
 
     }
-    function cancel (event) {
+    function cancel () {
       $uibModalInstance.dismiss('cancel');
     }
     function remove(id){

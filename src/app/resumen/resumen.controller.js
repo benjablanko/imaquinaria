@@ -42,7 +42,7 @@
 			return total.toFixed(2);
 		}
 		function validEmail(email){
-			 return vm.EMAIL_REGEXP.test(email);     
+			return vm.EMAIL_REGEXP.test(email);     
 		}
 		function enviarEmail (){
 			if(vm.persona && vm.persona.name && vm.persona.email && validEmail(vm.persona.email) && vm.persona.adress && vm.persona.country && vm.persona.city  && vm.persona.zipcode && vm.persona.region){
@@ -71,8 +71,8 @@
 				for (var i = 0; i < $rootScope.udpShopContent.length; i++) {
 					vm.mensaje = vm.mensaje + "<tr>"+ "<td>" + $rootScope.udpShopContent[i].id + "</td>"+ "<td>" + $rootScope.udpShopContent[i].name + "</td>"+"<td>" +$rootScope.udpShopContent[i].qty + "</td>"+"<td>" + $rootScope.udpShopContent[i].price + "</td>" +"<td>"+ $rootScope.udpShopContent[i].price * $rootScope.udpShopContent[i].qty + "</td>" +"</tr>";
 				}
-				 vm.mensaje += "<tr>";
-				 vm.mensaje += "<td colspan='6'>Shipping cost: " + vm.costoEnvio + "</td>" +" <tr>" +" <tr>" +
+				vm.mensaje += "<tr>";
+				vm.mensaje += "<td colspan='6'>Shipping cost: " + vm.costoEnvio + "</td>" +" <tr>" +" <tr>" +
 				"<td colspan='6'>Total price: " + vm.getTotal() + "</td>" +" <tr>" +" <tr>" +
 				" <td colspan='6'>Number of products: " + roundCurrency($rootScope.udpShopTotalProducts) + "</td> " +
 				" <tr>" +
@@ -83,7 +83,7 @@
 				
 				$http({
 						method: 'POST',
-						url: "/p6/imaquinariaserver/mail.php",
+						url: "imaquinariaserver/mail.php",
 						data: "nombre=" + "&email=" + vm.persona.email +"&mensaje="+vm.mensaje+"&cliente=0",
 						headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 				})
@@ -91,7 +91,7 @@
 			//email para el cliente
 			$http({
 					method: 'POST',
-					url: "/p6/imaquinariaserver/mail.php",
+					url: "imaquinariaserver/mail.php",
 					data: "nombre=" + "&email=" + vm.persona.email +"&mensaje="+vm.mensaje +"&cliente=1",
 					headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 				})     
@@ -115,7 +115,7 @@
 		var userData = {};
 		userData.cmd = "_cart";
 		userData.upload = "1";
-		userData.business = "benjanegocio@gmail.com";
+		userData.business = "sales@imaquinariatoys.cl";
 		userData.currencyCode = "USD";
 		userData.lc = "US";
 		userData.rm = 2;

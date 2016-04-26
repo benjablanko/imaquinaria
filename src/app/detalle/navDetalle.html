@@ -13,10 +13,9 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
-        <ul class="nav navbar-nav navbar-right">
-            <li><a ng-href="#/detalle/1" du-smooth-scroll="" du-scrollspy="">Model Kits</a></li>
-            <li><a ng-href="#/detalle/2" du-smooth-scroll="" du-scrollspy="">Art</a></li>
-            <li><a ng-href="#/detalle/3" du-smooth-scroll="" du-scrollspy="">Accessories</a></li>
+        <ul ng-repeat="t in detalle.datos  | orderBy:'-id'" class="nav navbar-nav navbar-right">
+            <li><a ng-href="#/detalle/{{t.id}}" du-smooth-scroll="" du-scrollspy="">{{t.title}}</a></li>
+           
         </ul>
         
     </li>

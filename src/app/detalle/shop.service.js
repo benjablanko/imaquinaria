@@ -129,7 +129,6 @@
 
 			function remove(id)
 			{
-				debugger;
 				try{
 					var i, len;
 					for (i = 0, len = $rootScope.udpShopContent.length; i < len; i++) 
@@ -175,7 +174,7 @@
 
 		function dataPayPal(userData, costoEnvio)
 		{
-			var htmlForm = "<form name='cart' action='https://www.sandbox.paypal.com/cgi-bin/webscr' method='post' id='formPaypal'>";
+			var htmlForm = "<form name='cart' action='https://www.paypal.com/cgi-bin/webscr' method='post' id='formPaypal'>";
 			for (var i = 0, len = $rootScope.udpShopContent.length; i < len; i++) 
 			{
 				var product = $rootScope.udpShopContent[i];
@@ -204,15 +203,15 @@
 			htmlForm += "<input type='hidden' name='currency_code' value='"+userData.currencyCode+"' />";
 			htmlForm += "<input type='hidden' name='cbt' value='"+userData.cbt+"' />";
 			htmlForm += "<input type='image' src='https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif' border='0' name='submit' alt='PayPal - The safer, easier way to pay online!'>";
-			htmlForm += "<img alt=' border='0' src='https://www.paypalobjects.com/es_XC/i/scr/pixel.gif' width='1' height='1'>";
+			htmlForm += "<img alt='' border='0' src='https://www.paypalobjects.com/es_XC/i/scr/pixel.gif' width='1' height='1'>";
 			htmlForm += "</form>";
 			
 
 	
 
 			$("#paypalContent").html("").append(htmlForm);
-			//$("#asd").html("").append(htmlForm);
 		}
+		
 		function setSessionStorage(){
 			$sessionStorage.udpShopTotalPrice  = $rootScope.udpShopTotalPrice.toString();
 			$sessionStorage.udpShopTotalProducts = $rootScope.udpShopTotalProducts.toString();
@@ -220,46 +219,5 @@
 
 		}
 
-			/**
-			* @desc - prepara el formulario hacía paypal con el contenido del carrito y los datos
-			* que ha establecido el usuario previamente
-			* @param - userData - datos de la tienda para el formulario de paypal
-			*/
-			/*function dataPayPal(userData, costoEnvio)
-			{
-
-				var htmlForm = "";
-				for (var i = 0, len = $rootScope.udpShopContent.length; i < len; i++) 
-				{
-					var product = $rootScope.udpShopContent[i];
-					var currentProduct = i + 1;
-					htmlForm += "<input type='hidden' name='item_number_"+currentProduct+"' value="+product.id+" />";
-					htmlForm += "<input type='hidden' name='item_name_"+currentProduct+"' value='"+product.name+"' />";
-					htmlForm += "<input type='hidden' name='quantity_"+currentProduct+"' value="+product.qty+" />";
-					htmlForm += "<input type='hidden' name='amount_"+currentProduct+"' value="+product.price.toFixed(2)+" />";
-				}
-				currentProduct = currentProduct + 1;
-				htmlForm += "<input type='hidden' name='item_number_"+currentProduct+"' value="+123111+" />";
-				htmlForm += "<input type='hidden' name='item_name_"+currentProduct+"' value='"+"shipping Cost"+"' />";
-				htmlForm += "<input type='hidden' name='quantity_"+currentProduct+"' value="+1+" />";
-				htmlForm += "<input type='hidden' name='amount_"+currentProduct+"' value="+costoEnvio+" />";
-
-
-				htmlForm += "<input type='hidden' name='cmd' value='"+userData.cmd+"' />";
-				htmlForm += "<input type='hidden' name='upload' value='"+userData.upload+"' />";
-				htmlForm += "<input type='hidden' name='business' value='"+userData.business+"' />";
-				htmlForm += "<input type='hidden' name='cancel_return' value='"+userData.cancelUrl+"' />";
-				htmlForm += "<input type='hidden' name='cbt' value='"+userData.msgReturn+"' />";
-				htmlForm += "<input type='hidden' name='return' value='"+userData.successUrl+"' />";
-				htmlForm += "<input type='hidden' name='rm' value="+userData.rm+ " />";
-				htmlForm += "<input type='hidden' name='lc' value='"+userData.lc+"' />";
-				htmlForm += "<input type='hidden' name='currency_code' value='"+userData.currencyCode+"' />";
-				htmlForm += "<input type='hidden' name='cbt' value='"+userData.cbt+"' />";
-				debugger;
-				//$("#formPaypal2").html("").append(htmlForm);
-				$("#formPaypal").html("").append(htmlForm);
-				//angular.element(("#formPaypal").html("").append(htmlForm));
-				//angular.element((userData.formClass).html("").append(htmlForm));
-			}*/
 		}
 })();

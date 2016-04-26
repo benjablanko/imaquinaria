@@ -19,7 +19,7 @@
         <ul class="boton-carrito nav navbar-nav navbar-right">
         <li class="dropdown">
               <!-- Simple dropdown -->
-          <span uib-dropdown on-toggle="nav.toggled(open)">
+          <span uib-dropdown>
           <a href id="simple-dropdown" uib-dropdown-toggle> 
             <span class="glyphicon glyphicon-shopping-cart"></span> {{ udpShopTotalProducts }} - Items
           </a>
@@ -33,7 +33,7 @@
 
                       <span class="item-info">
                           <span>{{prod.name}} ${{prod.price}}</span>
-                          <span>cantidad: {{prod.qty}}</span>
+                          <span>Units: {{prod.qty}}</span>
                       </span>
                   </span>
                   <span class="item-right">

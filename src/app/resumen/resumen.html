@@ -52,9 +52,14 @@
             </tfoot>
         </table>
     </div>
-    <div class='row'>
-        <div class='col-xs-12 col-sm-4 col-sm-offset-4'>  
-            <button class="btn btn-primary btn-block" type="button" ng-click="resumen.continueShoping()">Continue Shoping</button>
+    <div class='row row-centered'>
+        <div class='col-centered col-xs-6 col-md-2 col-sm-3'>  
+            <div id ="paypalContent">  
+                    <!--añadimos nuestro formulario de paypal-->
+
+                        <!--añadimos nuestro formulario de paypal-->
+                            {{ resumen.paypalData() }}         
+            </div>
         </div>
     </div>
     <div class='col-xs-12'> 
@@ -66,13 +71,7 @@
     <form name="myForm">
         <div class ="datosPersona col-xs-12 col-sm-8 col-sm-offset-2">
             <div class='row'>
-                <div class='col-sm-12'>
-                    <div class='form-group'>
-                        <div ng-show ="resumen.errorForm" class="alert alert-success" role="alert"> 
-                            <strong>Invalid values!</strong>  
-                        </div>
-                    </div>
-                </div>
+                
                 <div class='row'>
                     <div class='col-sm-12'>
                         <div class='form-group'>
@@ -139,17 +138,17 @@
                         </div>
                     </div>
                 </div>
+                <div class='col-sm-12'>
+                    <div class='form-group'>
+                        <div ng-show ="resumen.errorForm" class="alert alert-danger" role="alert"> 
+                           <h4 class ="text-center"> <strong>Invalid values!</strong></h4>  
+                        </div>
+                    </div>
+                </div>
                 <div class='row' style="margin-bottom: 100px;"> 
  
-                    <div class='col-xs-6 col-sm-6' id ="paypalContent">  
-                    <!--añadimos nuestro formulario de paypal-->
-
-                        <!--añadimos nuestro formulario de paypal-->
-                            {{ resumen.paypalData() }}
-                            
-                        
-                    </div>
-                    <div class='col-xs-6 col-sm-6'>  
+                    
+                    <div class='col-xs-12 col-sm-4 col-sm-offset-4'>  
                         <button class="btn btn-primary btn-block" ng-click="resumen.enviarEmail()"  type="button">Submit</button>
                     </div>
                 </div>

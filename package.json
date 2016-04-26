@@ -1,7 +1,9 @@
 {
   "name": "miApp",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "process-nextick-args": "^1.0.6"
+  },
   "scripts": {
     "test": "gulp test"
   },

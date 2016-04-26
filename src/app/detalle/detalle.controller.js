@@ -9,6 +9,11 @@
 	function DetalleController($Shop, $uibModal, $log, $stateParams, $http, $rootScope, $window) {
 		var vm = this;
 
+		vm.datos = [];
+		$http.get('json/tienda.json').success(function (data) {
+			vm.datos =   data;
+		});
+
 		$window.scrollTo(0,0);
 		vm.class = "";
 		if($stateParams.idDetalle === "2"){
@@ -23,6 +28,7 @@
 		}
 		vm.add = add;
 		vm.abrir = abrir;
+		vm.notSorted = notSorted;
 		vm.items = ['item1', 'item2', 'item3'];
 		vm.animationsEnabled = true;	
 		vm.myInterval = 5000;
@@ -59,6 +65,14 @@
 			vm.abrir("xs");
 		
 		}
+
+		function notSorted (obj){
+			if (!obj) {
+				return [];
+			}
+			return Object.keys(obj);
+		}
+
 		function abrir(size) {
 			var modalCompra;
 			if($rootScope.showme){

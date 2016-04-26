@@ -4,13 +4,12 @@
   angular
 	.module('miApp')
 	.controller('NavController', NavController);
-	NavController.$inject = ['$location','Shop', '$log']; 
+	NavController.$inject = ['$location','Shop']; 
 
   /** @ngInject */
-  function NavController($location, $Shop, $log) {
+  function NavController($location, $Shop) {
 	var vm = this;
 	vm.remove = remove;
-	vm.toggled = toggled;
 	vm.toggleDropdown = toggleDropdown;
 	vm.hasPicture = hasPicture;
 	vm.status =  {
@@ -25,10 +24,7 @@
         else return false
     }
 
-	function toggled(open) {
-		//$log.log('Dropdown is now: ', open);
-	}
-	function toggleDropdown(event) {
+	function toggleDropdown() {
 		vm.status.isopen = !vm.status.isopen;
 	}
 	function remove(id){
