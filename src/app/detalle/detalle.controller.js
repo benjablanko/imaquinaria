@@ -132,14 +132,10 @@
 				full: false
 			}
 			$http.get('json/postCards.json').success(function (data) {
-				//Convert data to array.
-				//datos lo tenemos disponible en la vista gracias a $scope
 				vm.postCards =  data;
 			});
 
 			$http.get('json/posters.json').success(function (data) {
-				//Convert data to array.
-				//datos lo tenemos disponible en la vista gracias a $scope
 				vm.posters =  data;
 			});	
 
@@ -150,8 +146,6 @@
 				full: true
 			}
 			$http.get('json/accessories.json').success(function (data) {
-				//Convert data to array.
-				//datos lo tenemos disponible en la vista gracias a $scope
 				vm.productosTienda =   data;
 			});
 		}
