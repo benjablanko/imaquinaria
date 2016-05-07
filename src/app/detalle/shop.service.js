@@ -174,6 +174,7 @@
 
 		function dataPayPal(userData, costoEnvio)
 		{
+			//var htmlForm = "<form name='cart' action='https://www.sandbox.paypal.com/cgi-bin/webscr' method='post' id='formPaypal'>";
 			var htmlForm = "<form name='cart' action='https://www.paypal.com/cgi-bin/webscr' method='post' id='formPaypal'>";
 			for (var i = 0, len = $rootScope.udpShopContent.length; i < len; i++) 
 			{

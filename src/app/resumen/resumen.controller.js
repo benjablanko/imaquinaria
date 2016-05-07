@@ -115,12 +115,13 @@
 		var userData = {};
 		userData.cmd = "_cart";
 		userData.upload = "1";
+		//userData.business = "benjanegocio@gmail.com";
 		userData.business = "sales@imaquinariatoys.cl";
 		userData.currencyCode = "USD";
 		userData.lc = "US";
 		userData.rm = 2;
 		//url retorno paypal lado server, envia data post
-		userData.successUrl = "http://http://imaquinariatoys.cl/";
+		userData.successUrl = "http://http://imaquinariatoys.cl/#/success";
 		userData.cancelUrl = "http://imaquinariatoys.cl/";
 		userData.cbt = "return to store";
 		userData.formClass = "#formPaypal";

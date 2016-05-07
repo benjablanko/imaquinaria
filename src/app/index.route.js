@@ -11,6 +11,11 @@
     controller: 'NavController',
     controllerAs: 'nav'
   };
+    var navInter = {
+    templateUrl: 'app/nav/navInter.html',
+    controller: 'NavController',
+    controllerAs: 'nav'
+  };
   var navDetalle = {
       templateUrl: 'app/detalle/navDetalle.html',
       controller: 'DetalleController',
@@ -48,7 +53,7 @@
       .state('detalle', {
         url: '/detalle/:idDetalle',
         views:{
-            'nav': nav,
+            'nav': navInter,
             'detalle': {       
               templateUrl: 'app/detalle/detalle.html',
               controller: 'DetalleController',
@@ -64,7 +69,7 @@
       .state('resumen', {
         url: '/resumen',
         views:{
-            'nav': nav,
+            'nav': navInter,
             'resumen': {       
               templateUrl: 'app/resumen/resumen.html',
               controller: 'ResumenController',
@@ -77,10 +82,24 @@
         }
 
       })
+      .state('success', {
+        url: '/success',
+        views:{
+            'nav': navInter,
+            'success': {       
+              templateUrl: 'app/success/success.html'
+            },
+            'navdetalle': navDetalle,
+            'footer':{
+              templateUrl: 'app/footer/footer.html'
+            }
+        }
+
+      })
       .state('cancel', {
         url: '/cancel',
         views:{
-            'nav': nav,
+            'nav': navInter,
             'navdetalle': navDetalle,
             'cancel': {       
               templateUrl: 'app/cancel/cancel.html'
