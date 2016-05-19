@@ -87,7 +87,9 @@
         views:{
             'nav': navInter,
             'success': {       
-              templateUrl: 'app/success/success.html'
+              templateUrl: 'app/success/success.html',
+              controller: 'SuccessController',
+              controllerAs: 'success'
             },
             'navdetalle': navDetalle,
             'footer':{
@@ -102,7 +104,9 @@
             'nav': navInter,
             'navdetalle': navDetalle,
             'cancel': {       
-              templateUrl: 'app/cancel/cancel.html'
+              templateUrl: 'app/cancel/cancel.html',
+              controller: 'CancelController',
+              controllerAs: 'cancel'
             },
             'footer':{
               templateUrl: 'app/footer/footer.html'
@@ -117,7 +121,6 @@
     function run($rootScope, $location, $window) {
         // initialise google analytics
         $window.ga('create', 'UA-XXXXXXXX-X', 'auto');
- 
         // track pageview on state change
         $rootScope.$on('$stateChangeSuccess', function (event) {
           if (!$window.ga)

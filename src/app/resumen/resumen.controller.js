@@ -8,6 +8,9 @@
 	/** @ngInject */
 	function ResumenController($rootScope, $http, $uibModal, $Shop, $window) {
 		var vm = this;
+		if(!$(".detalleAltura")){
+			$(".detalleAltura").addClass("detalleAltura");
+		}
 		vm.userDataPayPal = userDataPayPal;
 		vm.paypalData = paypalData;
 		vm.enviarEmail = enviarEmail;
@@ -50,9 +53,11 @@
 				vm.email = $rootScope.email;
 				vm.mensaje = '';
 		
-
+  
 				vm.mensaje += "<html><body>";
-				vm.mensaje += " <h2>Shipping Detail: </h2> <br><Information br><br> <strong>Name: </strong>";
+				vm.mensaje += " <h2 align='center'>SHIPPING DETAIL</h2> ";
+				vm.mensaje += " <img  style ='display: block;margin-left: auto;margin-right: auto' src='http://imaquinariatoys.cl/p6/dist/assets/images/underline-red.png'>";
+				vm.mensaje += "<br><Information br><br> <strong>Name: </strong>";
 				vm.mensaje +=   vm.persona.name  ;
 				vm.mensaje += "  <br> <br> <br> <strong> Email:</strong> " +vm.persona.email + " <br> <br> <br> ";
 				vm.mensaje += "  <strong> Adress:</strong> "+ vm.persona.adress+ " <br> <br> <br> ";
@@ -66,15 +71,26 @@
 				if(vm.persona.comments){
 					vm.mensaje += "<strong> Comments:  </strong> " + vm.persona.comments +"<br> <br> <br>";
 				}
-				vm.mensaje = vm.mensaje + '<table rules="all" style="border-color: #666;" cellpadding="10" ><thead><tr><th>Id</th><th>Product</th><th>Quantity</th><th>Unit Price</th><th>Sub total</th></tr></thead><tbody>';
+				vm.mensaje = vm.mensaje + 
+				"<table width='100%' border='0' cellspacing='0' cellpadding='0'>" +
+					"<thead>" +
+						"<tr style='height:50px'>" +
+							"<th style='border-bottom: 1px solid #C82C3B;'>Id</th>" +
+							"<th style='border-bottom: 1px solid #C82C3B;'>Product</th>" +
+							"<th style='border-bottom: 1px solid #C82C3B;'>Quantity</th>" +
+							"<th style='border-bottom: 1px solid #C82C3B;'>Unit Price</th>" +
+							"<th style='border-bottom: 1px solid #C82C3B;'>Sub total</th>" +
+						"</tr>" +
+					"</thead>" +
+					"<tbody>";
  
 				for (var i = 0; i < $rootScope.udpShopContent.length; i++) {
-					vm.mensaje = vm.mensaje + "<tr>"+ "<td>" + $rootScope.udpShopContent[i].id + "</td>"+ "<td>" + $rootScope.udpShopContent[i].name + "</td>"+"<td>" +$rootScope.udpShopContent[i].qty + "</td>"+"<td>" + $rootScope.udpShopContent[i].price + "</td>" +"<td>"+ $rootScope.udpShopContent[i].price * $rootScope.udpShopContent[i].qty + "</td>" +"</tr>";
+					vm.mensaje = vm.mensaje + "<tr style='height:50px'>"+ "<td align='center' style='border-bottom: 1px solid #C82C3B;'>" + $rootScope.udpShopContent[i].id + "</td>"+ "<td style='border-bottom: 1px solid #C82C3B;'>" + $rootScope.udpShopContent[i].name + "</td>"+"<td style='border-bottom: 1px solid #C82C3B;'>" +$rootScope.udpShopContent[i].qty + "</td>"+"<td style='border-bottom: 1px solid #C82C3B;'>" + $rootScope.udpShopContent[i].price + "</td>" +"<td style='border-bottom: 1px solid #C82C3B;'>"+ $rootScope.udpShopContent[i].price * $rootScope.udpShopContent[i].qty + "</td>" +"</tr>";
 				}
-				vm.mensaje += "<tr>";
-				vm.mensaje += "<td colspan='6'>Shipping cost: " + vm.costoEnvio + "</td>" +" <tr>" +" <tr>" +
-				"<td colspan='6'>Total price: " + vm.getTotal() + "</td>" +" <tr>" +" <tr>" +
-				" <td colspan='6'>Number of products: " + roundCurrency($rootScope.udpShopTotalProducts) + "</td> " +
+				vm.mensaje += "<tr style='height:50px'>";
+				vm.mensaje += "<td style='border-bottom: 1px solid #C82C3B;' colspan='6'>Shipping cost: " + vm.costoEnvio + "</td>" +" <tr>" +" <tr style='height:50px'>" +
+				"<td style='border-bottom: 1px solid #C82C3B;' colspan='6'>Total price: " + vm.getTotal() + "</td>" +" <tr>" +" <tr style='height:50px'>" +
+				" <td style='border-bottom: 1px solid #C82C3B;' colspan='6'>Number of products: " + roundCurrency($rootScope.udpShopTotalProducts) + "</td> " +
 				" <tr>" +
 				" <tr>" +
 				" <tr>" +  
@@ -83,7 +99,7 @@
 				
 				$http({
 						method: 'POST',
-						url: "imaquinariaserver/mail.php",
+						url: "/imaquinariaserver/mail.php",
 						data: "nombre=" + "&email=" + vm.persona.email +"&mensaje="+vm.mensaje+"&cliente=0",
 						headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 				})
@@ -91,7 +107,7 @@
 			//email para el cliente
 			$http({
 					method: 'POST',
-					url: "imaquinariaserver/mail.php",
+					url: "/imaquinariaserver/mail.php",
 					data: "nombre=" + "&email=" + vm.persona.email +"&mensaje="+vm.mensaje +"&cliente=1",
 					headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 				})     
@@ -121,7 +137,7 @@
 		userData.lc = "US";
 		userData.rm = 2;
 		//url retorno paypal lado server, envia data post
-		userData.successUrl = "http://http://imaquinariatoys.cl/#/success";
+		userData.successUrl = "http://imaquinariatoys.cl/#/success";
 		userData.cancelUrl = "http://imaquinariatoys.cl/";
 		userData.cbt = "return to store";
 		userData.formClass = "#formPaypal";

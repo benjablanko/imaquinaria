@@ -5,7 +5,8 @@
         "category":"Detalles",
         "title":"POSTERS",
         "name":"POSTERS",
-        "price":15.00,
+        "officialPrice": 15.00,
+        "price":9.00,
         "imagenes":[  
             {  
                 "image":"assets/images/posters/1.jpg"
@@ -21,7 +22,8 @@
         "category":"Detalles",
         "title":"",
         "name":"POSTERS",
-        "price":15.00,
+        "officialPrice": 15.00,
+        "price":9.00,
         "imagenes":[  
             {  
                 "image":"assets/images/posters/2.jpg"
@@ -37,7 +39,8 @@
         "category":"Detalles",
         "title":"",
         "name":"POSTERS",
-        "price":15.00,
+        "officialPrice": 15.00,
+        "price":9.00,
         "imagenes":[  
             {  
                 "image":"assets/images/posters/3.jpg"
@@ -53,7 +56,8 @@
         "category":"Detalles",
         "title":"",
         "name":"POSTERS",
-        "price":15.00,
+        "officialPrice": 15.00,
+        "price":9.00,
         "imagenes":[  
             {  
                 "image":"assets/images/posters/4.jpg"
@@ -69,7 +73,8 @@
         "category":"Detalles",
         "title":"",
         "name":"POSTERS",
-        "price":15.00,
+        "officialPrice": 15.00,
+        "price":9.00,
         "imagenes":[  
             {  
                 "image":"assets/images/posters/5.jpg"
@@ -85,7 +90,8 @@
         "category":"Detalles",
         "title":"",
         "name":"POSTERS",
-        "price":15.00,
+        "officialPrice": 15.00,
+        "price":9.00,
         "imagenes":[  
             {  
                 "image":"assets/images/posters/6.jpg"
@@ -101,7 +107,8 @@
         "category":"Detalles",
         "title":"",
         "name":"POSTERS",
-        "price":15.00,
+        "officialPrice": 15.00,
+        "price":9.00,
         "imagenes":[  
             {  
                 "image":"assets/images/posters/7.jpg"
@@ -117,7 +124,8 @@
         "category":"Detalles",
         "title":"",
         "name":"POSTERS",
-        "price":15.00,
+        "officialPrice": 15.00,
+        "price":9.00,
         "imagenes":[  
             {  
                 "image":"assets/images/posters/8.jpg"
@@ -133,7 +141,8 @@
         "category":"Detalles",
         "title":"",
         "name":"POSTERS",
-        "price":15.00,
+        "officialPrice": 15.00,
+        "price":9.00,
         "imagenes":[  
             {  
                 "image":"assets/images/posters/9.jpg"
@@ -142,5 +151,29 @@
         "escala":"",
         "procedencia":"",
         "description":"Illustrated posters from the “Café Air Racer” series. 43x28 cms., laser print over matte couche, 300grs.  (frame is not included)."
+    },
+    
+    {  
+        "boton":"add to cart",
+        "id":12,
+        "category":"Detalles",
+        "title":"POSTCARDS SET",
+        "name":"POSTCARDS SET",
+        "officialPrice": 29.00,
+        "price":19.00,
+        "imagenes":[  
+            {  
+                "image":"assets/images/postales/postales1.jpg"
+            },
+            {  
+                "image":"assets/images/postales/postales2.jpg"
+            },
+            {  
+                "image":"assets/images/postales/postales3.jpg"
+            }
+        ],
+        "escala":"",
+        "procedencia":"",
+        "description":"Illustrated set of 21 postcards from the “Café Air Racer” series. 43x28 cms., laser print over matte couche, 300grs."
     }
 ]

@@ -3,9 +3,10 @@
         "boton":"add to cart",
         "id":13,
         "category":"Detalles",
-        "title":"FIGURES",
-        "name":"FIGURES",
-        "price":35.00,
+        "title":"PILOT GIRLS",
+        "name":"PILOT GIRLS",
+        "officialPrice":49.00,
+        "price":29.00,
         "imagenes":[  
             {  
                 "image":"assets/images/pilotas/pilotas_1.jpg"

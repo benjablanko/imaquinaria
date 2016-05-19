@@ -8,6 +8,9 @@
   /** @ngInject */
   function ModalController($uibModalInstance, items, $window, $Shop,$rootScope, $http) {
     var vm = this;
+    if(!$(".detalleAltura")){
+      $(".detalleAltura").addClass("detalleAltura");
+    }
     vm.items = items;
     vm.cancel = cancel;
     vm.ok = ok;

@@ -12,6 +12,7 @@
 		vm.datos = [];
 		$http.get('json/tienda.json').success(function (data) {
 			vm.datos =   data;
+
 		});
 
 		$window.scrollTo(0,0);
@@ -118,9 +119,7 @@
 		vm.navbarCollapsed  = true; 
 		
 		if($stateParams.idDetalle === "1"){ //model
-			vm.clases = {
-				full: false
-			}
+			$("#detalle").addClass("marketing");
 
 		$http.get('json/modelKits.json').success(function (data) {
 			vm.productosTienda =  data;
@@ -128,23 +127,16 @@
 	
 		}
 		if($stateParams.idDetalle === "2"){ //art
-			vm.clases = {
-				full: false
-			}
-			$http.get('json/postCards.json').success(function (data) {
-				vm.postCards =  data;
-			});
-
+			$("#detalle").addClass("marketing2");
 			$http.get('json/posters.json').success(function (data) {
-				vm.posters =  data;
+				vm.productosTienda =  data;
 			});	
 
 		}
 		if($stateParams.idDetalle === "3"){ //accessories
 			//para las pilotas esta en true
-			vm.clases = {
-				full: true
-			}
+			$("#detalle").addClass("marketing2");
+
 			$http.get('json/accessories.json').success(function (data) {
 				vm.productosTienda =   data;
 			});
