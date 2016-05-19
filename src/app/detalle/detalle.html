@@ -37,10 +37,10 @@
 
 						        <div style="margin-top: 22px;" class ="row">
 						        	<div class ="col-sm-6">
-						        		<h2 class ="precio">Price: ${{ productoTienda.price }} USD</h2>
-						       				<p>before:<strike> ${{productoTienda.officialPrice}}</strike></p>
-
-						        			<p>(Shipping cost not included)</p>
+						        		
+										<h2 class ="precio">Discount price: $ {{ productoTienda.price }} USD</h2>
+										<p> Normal price: $ <strike>{{productoTienda.officialPrice}}</strike></p>
+										<p>(Shipping cost not included)</p>
 						        	</div>
 						        	<div class ="col-sm-6">
 						 				<button  style="min-width:133px; margin-bottom: 22px;"  class="btn btn-primary btn-md center-block boton_envio" ng-click="detalle.add(productoTienda)">{{productoTienda.boton}}</button>
