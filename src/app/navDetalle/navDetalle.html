@@ -10,7 +10,7 @@
             </button>
         </div>
         <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
-            <ul ng-repeat="t in detalle.datos  | orderBy:'-id'" class="nav navbar-nav navbar-right">
+            <ul ng-repeat="t in navDetalle.datos  | orderBy:'-id'" class="nav navbar-nav navbar-right">
                 <li>
                     <a ng-href="#/detalle/{{t.id}}" du-smooth-scroll="" du-scrollspy="">{{t.title}}</a>
                 </li>   

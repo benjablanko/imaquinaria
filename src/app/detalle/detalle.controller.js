@@ -9,24 +9,9 @@
 	function DetalleController($Shop, $uibModal, $log, $stateParams, $http, $rootScope, $window) {
 		var vm = this;
 
-		vm.datos = [];
-		$http.get('json/tienda.json').success(function (data) {
-			vm.datos =   data;
-
-		});
-
 		$window.scrollTo(0,0);
 		vm.class = "";
-		if($stateParams.idDetalle === "2"){
-			vm.idDetalle = true;	
-		}else{
-			vm.idDetalle = false;
-		}
-		if($stateParams.idDetalle === "1"){
-			vm.class ="marketing";
-		}else{
-			vm.class ="marketing2";
-		}
+		vm.class = $stateParams.idDetalle;
 		vm.add = add;
 		vm.abrir = abrir;
 		vm.notSorted = notSorted;
@@ -115,33 +100,13 @@
 				//$log.info('Modal dismissed at: ' + new Date());
 			});
 		}
-
-		vm.navbarCollapsed  = true; 
-		
-		if($stateParams.idDetalle === "1"){ //model
-			$("#detalle").addClass("marketing");
-
-		$http.get('json/modelKits.json').success(function (data) {
+		$http.get('json/' + $stateParams.idDetalle + '.json').success(function (data) {
 			vm.productosTienda =  data;
 		});
+
+		vm.navbarCollapsed  = true; 
 	
-		}
-		if($stateParams.idDetalle === "2"){ //art
-			$("#detalle").addClass("marketing2");
-			$http.get('json/posters.json').success(function (data) {
-				vm.productosTienda =  data;
-			});	
-
-		}
-		if($stateParams.idDetalle === "3"){ //accessories
-			//para las pilotas esta en true
-			$("#detalle").addClass("marketing2");
-
-			$http.get('json/accessories.json').success(function (data) {
-				vm.productosTienda =   data;
-			});
-		}
-
+		
 	}
 
 

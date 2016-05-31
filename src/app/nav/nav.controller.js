@@ -12,6 +12,7 @@
 	vm.remove = remove;
 	vm.toggleDropdown = toggleDropdown;
 	vm.hasPicture = hasPicture;
+	
 	vm.status =  {
 		isopen: false
 	};

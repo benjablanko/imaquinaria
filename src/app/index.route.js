@@ -6,23 +6,34 @@
     .config(routerConfig)
     .run(run);
 
+  angular
+    .module('miApp')
+    .constant('footerConfig',{
+      templateUrl: 'app/footer/footer.html'    
+    })
+    .constant('navDetalleConfig',{
+      templateUrl: 'app/navDetalle/navDetalle.html',
+      controller: 'NavDetalleController',
+      controllerAs: 'navDetalle'    
+    });
+
   var nav = {
     templateUrl: 'app/nav/nav.html',
     controller: 'NavController',
     controllerAs: 'nav'
   };
-    var navInter = {
+  var navInter = {
     templateUrl: 'app/nav/navInter.html',
     controller: 'NavController',
     controllerAs: 'nav'
   };
   var navDetalle = {
-      templateUrl: 'app/detalle/navDetalle.html',
-      controller: 'DetalleController',
-      controllerAs: 'detalle'         
+      templateUrl: 'app/navDetalle/navDetalle.html',
+      controller: 'NavDetalleController',
+      controllerAs: 'navDetalle'         
   };
   /** @ngInject */
-  function routerConfig($stateProvider, $urlRouterProvider) {
+  function routerConfig($stateProvider, $urlRouterProvider, footerConfig, navDetalleConfig) {
 
     $stateProvider
       .state('home', {
@@ -45,9 +56,7 @@
               controller: 'ContactoController',
               controllerAs: 'contacto'
             },
-            'footer':{
-              templateUrl: 'app/footer/footer.html'
-            }
+            'footer':footerConfig
         }
       })
       .state('detalle', {
@@ -59,10 +68,8 @@
               controller: 'DetalleController',
               controllerAs: 'detalle'
             },
-            'navdetalle': navDetalle,
-            'footer':{
-              templateUrl: 'app/footer/footer.html'
-            }
+            'navdetalle': navDetalleConfig,
+            'footer':footerConfig
         }
 
       })
@@ -75,10 +82,8 @@
               controller: 'ResumenController',
               controllerAs: 'resumen'
             },
-            'navdetalle': navDetalle,
-            'footer':{
-              templateUrl: 'app/footer/footer.html'
-            }
+            'navdetalle': navDetalleConfig,
+            'footer':footerConfig
         }
 
       })
@@ -91,10 +96,8 @@
               controller: 'SuccessController',
               controllerAs: 'success'
             },
-            'navdetalle': navDetalle,
-            'footer':{
-              templateUrl: 'app/footer/footer.html'
-            }
+            'navdetalle': navDetalleConfig,
+            'footer':footerConfig
         }
 
       })
@@ -102,15 +105,13 @@
         url: '/cancel',
         views:{
             'nav': navInter,
-            'navdetalle': navDetalle,
+            'navdetalle': navDetalleConfig,
             'cancel': {       
               templateUrl: 'app/cancel/cancel.html',
               controller: 'CancelController',
               controllerAs: 'cancel'
             },
-            'footer':{
-              templateUrl: 'app/footer/footer.html'
-            }
+            'footer':footerConfig
         }
 
       });

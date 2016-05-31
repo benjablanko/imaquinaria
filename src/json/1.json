@@ -1,0 +1,65 @@
+[  
+    {  
+        "boton":"add to cart",
+        "id":10,
+        "category":"Detalles",
+        "title":"CHERCAN",
+        "name":"CHERCAN",
+        "officialPrice":95.00,
+        "price":65.00,
+        "imagenes":[  
+            {  
+                "image":"assets/images/aviones/IMG_PROD_CHERCAN.jpg"
+            },
+            {  
+                "image":"assets/images/aviones/IMG_PROD_CHERCAN2.jpg"
+            },
+            {  
+                "image":"assets/images/aviones/IMG_PROD_CHERCAN3.jpg"
+            },
+            {  
+                "image":"assets/images/aviones/IMG_PROD_CHERCAN4.jpg"
+            },
+            {  
+                "image":"assets/images/aviones/IMG_PROD_CHERCAN5.jpg"
+            },
+            {  
+                "image":"assets/images/aviones/IMG_PROD_CHERCAN6.jpg"
+            },
+            {  
+                "image":"assets/images/aviones/IMG_PROD_CHERCAN7.jpg"
+            }
+        ],
+        "escala":"Resin model kit, 1/35 scale.",
+        "procedencia":"Made in Chile, 2015",
+        "description":"One of the fastest aircrafts on the Café Air Racer collection. Its large, turboprop engine, two coaxial propellers in contra-rotation and a low profile aerodynamic fuselage make this machine unbeatable on straight lines. The kit includes: sheet with list of pieces, sheet with suggested profile colors, assembly manual, clear decals + white base, 2 Pilot figures (one sitting and one standing) and 36 pieces of your Chercán aircraft"
+    },
+    {  
+        "boton":"notify me when available",
+        "id":11,
+        "category":"Detalles",
+        "title":"TRICAHUE",
+        "name":"TRICAHUE",
+        "price":"Soon",
+        "imagenes":[  
+            {  
+                "image":"assets/images/aviones/tricahue1.jpg"
+            },
+            {  
+                "image":"assets/images/aviones/tricahue2.jpg"
+            },
+            {  
+                "image":"assets/images/aviones/tricahue3.jpg"
+            },
+            {  
+                "image":"assets/images/aviones/tricahue4.jpg"
+            },
+            {  
+                "image":"assets/images/aviones/tricahue5.jpg"
+            }
+        ],
+        "escala":"Resin model kit, 1/35 scale.",
+        "procedencia":"Made in Chile, 2015",
+        "description":"One of the fastest aircrafts on the Café Air Racer collection. Its large, turboprop engine, two coaxial propellers in contra-rotation and a low profile aerodynamic fuselage make this machine unbeatable on straight lines."
+    }
+]
