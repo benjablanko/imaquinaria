@@ -11,7 +11,8 @@
 
 		$window.scrollTo(0,0);
 		vm.class = "";
-		vm.class = $stateParams.idDetalle;
+		vm.class = ($stateParams.idDetalle === "1" || $stateParams.idDetalle === "2") ? $stateParams.idDetalle : "1";
+		debugger;
 		vm.add = add;
 		vm.abrir = abrir;
 		vm.notSorted = notSorted;

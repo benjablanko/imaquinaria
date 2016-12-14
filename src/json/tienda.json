@@ -13,5 +13,10 @@
 		"id": 3,
 		"title": "Accessories",
 		"image": 3
+	},
+	{
+		"id": 4,
+		"title": "PRUEBA",
+		"image": 4
 	}
 ]
